@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/propuesta_dashboard_adm.css">
+    <title>Dashboard_adm — Ramona Hotel</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <span class="navbar-brand">Ramona Hotel</span>
+            <ul>
+                <!--Completar con los link-->
+                <li><a href="propuesta.html">Inicio</a></li>
+                <li><a href="" class="nav-active">Dashboard</a></li>
+                <li><a href="">Usuarios</a></li><!-- boton para poder ver el listado de usuarios y poder realizar modificaciones y asignar  roles? Falta desarrollar -->
+                <li><a href="">Cerrar Sesion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard-main">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="dashboard-title">Panel de Administración</h1>
+                <p class="dashboard-subtitle">Resumen del estado actual del hotel</p>
+            </div>
+            <div class="dashboard-date">
+                <p class="date-label">Hoy</p>
+                <p class="date-value">Lunes, 11 de mayo 2026</p>
+            </div>
+        </div>
+
+        <!-- Métricas principales sin interaccion aun-->
+        <section class="metrics-grid">
+
+            <div class="metric-card">
+                <p class="metric-label">Ocupación actual</p>
+                <p class="metric-value">78<span class="metric-unit">%</span></p>
+                <p class="metric-sub positive">↑ 6% respecto a ayer</p>
+            </div>
+
+            <div class="metric-card">
+                <p class="metric-label">Habitaciones ocupadas</p>
+                <p class="metric-value">47<span class="metric-unit">/60</span></p>
+                <p class="metric-sub neutral">13 disponibles hoy</p>
+            </div>
+
+            <div class="metric-card">
+                <p class="metric-label">Check-ins hoy</p>
+                <p class="metric-value">8</p>
+                <p class="metric-sub neutral">3 pendientes de llegada</p>
+            </div>
+
+            <div class="metric-card">
+                <p class="metric-label">Check-outs hoy</p>
+                <p class="metric-value">5</p>
+                <p class="metric-sub neutral">Todos procesados</p>
+            </div>
+
+        </section>
+
+        <!-- Reservas y Ocupación -->
+        <section class="section-1 dashboard-section">
+            <div class="section-visual ocupacion-visual">
+                <p class="visual-label">Ocupación semanal</p>
+                <div class="bar-chart">
+                    <div class="bar-group" style="--h-num: 0.65">
+                        <div class="bar bar-highlight"></div>
+                        <span class="bar-label">Lun</span>
+                    </div>
+                    <div class="bar-group" style="--h-num: 0.80">
+                        <div class="bar bar-dim"></div>
+                        <span class="bar-label">Mar</span>
+                    </div>
+                    <div class="bar-group" style="--h-num: 0.72">
+                        <div class="bar"></div>
+                        <span class="bar-label">Mié</span>
+                    </div>
+                    <div class="bar-group" style="--h-num: 0.90">
+                        <div class="bar"></div>
+                        <span class="bar-label">Jue</span>
+                    </div>
+                    <div class="bar-group" style="--h-num: 0.78">
+                        <div class="bar"></div>
+                        <span class="bar-label">Viernes</span>
+                    </div>
+                    <div class="bar-group" style="--h-num: 0.85">
+                        <div class="bar"></div>
+                        <span class="bar-label">Sáb</span>
+                    </div>
+                    <div class="bar-group" style="--h-num: 0.60">
+                        <div class="bar"></div>
+                        <span class="bar-label">Dom</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2>Reservas y ocupación</h2>
+                <ul class="info-list">
+                    <li>
+                        <span class="info-dot"></span>
+                        <span>Reservas activas: <strong>47</strong></span>
+                    </li>
+                    <li>
+                        <span class="info-dot"></span>
+                        <span>Próximas reservas (7 días): <strong>24</strong></span>
+                    </li>
+                    <li>
+                        <span class="info-dot"></span>
+                        <span>Cancelaciones esta semana: <strong>2</strong></span>
+                    </li>
+                    <li>
+                        <span class="info-dot"></span>
+                        <span>Estancia promedio: <strong>2.4 noches</strong></span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Servicios Extras -->
+        <section class="section-2 dashboard-section">
+            <div class="section-visual servicios-visual">
+                <p class="visual-label">Ingresos por servicio</p>
+                <div class="service-bars">
+                    <div class="service-row">
+                        <span class="service-name">Restaurante</span>
+                        <div class="service-track">
+                            <div class="service-fill" style="--w: 82%"></div>
+                        </div>
+                        <span class="service-pct">82%</span>
+                    </div>
+                    <div class="service-row">
+                        <span class="service-name">Spa & Bienestar</span>
+                        <div class="service-track">
+                            <div class="service-fill" style="--w: 64%"></div>
+                        </div>
+                        <span class="service-pct">64%</span>
+                    </div>
+                    <div class="service-row">
+                        <span class="service-name">Habitaciones</span>
+                        <div class="service-track">
+                            <div class="service-fill" style="--w: 91%"></div>
+                        </div>
+                        <span class="service-pct">91%</span>
+                    </div>
+                    <div class="service-row">
+                        <span class="service-name">Eventos</span>
+                        <div class="service-track">
+                            <div class="service-fill" style="--w: 38%"></div>
+                        </div>
+                        <span class="service-pct">38%</span>
+                    </div>
+                    <div class="service-row">
+                        <span class="service-name">Estacionamiento</span>
+                        <div class="service-track">
+                            <div class="service-fill" style="--w: 55%"></div>
+                        </div>
+                        <span class="service-pct">55%</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2>Rendimiento de servicios</h2><br>
+                <ul class="info-list">
+                    <li>
+                        <span class="info-dot info-dot-positive"></span>
+                        <span>Mejor rendimiento: <strong>Habitaciones</strong></span>
+                    </li>
+                    <li>
+                        <span class="info-dot info-dot-alert"></span>
+                        <span>Área de mejora: <strong>Eventos</strong></span>
+                    </li>
+                    <li>
+                        <span class="info-dot"></span>
+                        <span>Servicios activos: <strong>5 de 7</strong></span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Próximas reservas -->
+        <section class="section-1 dashboard-section">
+            <div class="section-visual">
+                <p class="visual-label">Próximos check-ins</p>
+                <div class="reservas-list">
+
+                    <div class="reserva-item">
+
+                        <div class="reserva-info">
+                            <p class="reserva-nombre">Martínez, Gabriela</p>
+                            <p class="reserva-detalle">Hab. 204 · 2 noches · Doble</p>
+                        </div>
+                        <span class="reserva-badge">Hoy</span>
+                    </div>
+
+                    <div class="reserva-item">
+                        <div class="reserva-info">
+                            <p class="reserva-nombre">López, Pedro</p>
+                            <p class="reserva-detalle">Hab. 310 · 4 noches · Suite</p>
+                        </div>
+                        <span class="reserva-badge">Hoy</span>
+                    </div>
+
+                    <div class="reserva-item">
+                        <div class="reserva-info">
+                            <p class="reserva-nombre">Rodríguez, Familia</p>
+                            <p class="reserva-detalle">Hab. 118 · 3 noches · Familiar</p>
+                        </div>
+                        <span class="reserva-badge reserva-badge-next">Mañana</span>
+                    </div>
+
+                    <div class="reserva-item">
+                        <div class="reserva-info">
+                            <p class="reserva-nombre">Almada, Carolina</p>
+                            <p class="reserva-detalle">Hab. 401 · 1 noche · Individual</p>
+                        </div>
+                        <span class="reserva-badge reserva-badge-next">Mañana</span>
+                    </div>
+
+                </div>
+            </div>
+            <div>
+                <h2>Gestión de reservas</h2><br>
+                <ul class="info-list">
+                    <li>
+                        <span class="info-dot"></span>
+                        <span>Check-ins pendientes hoy: <strong>3</strong></span>
+                    </li>
+                    <li>
+                        <span class="info-dot info-dot-positive"></span>
+                        <span>Check-ins mañana: <strong>5</strong></span>
+                    </li>
+                    <li>
+                        <span class="info-dot info-dot-alert"></span>
+                        <span>Habitaciones por preparar: <strong>4</strong></span>
+                    </li>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
