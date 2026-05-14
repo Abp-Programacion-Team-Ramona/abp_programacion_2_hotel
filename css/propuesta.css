@@ -59,14 +59,10 @@ footer {
     display: flex;
     align-items: center;
     gap: 50px;
-
     background-color: #181818;
-
     margin-bottom: 40px;
     padding: 40px;
-
     border-radius: 20px;
-
     box-shadow:
         0 4px 12px rgba(0, 0, 0, 0.04);
 }
@@ -83,9 +79,7 @@ footer {
 .imagenes_propuesta {
     width: 50%;
     height: 320px;
-
     object-fit: cover;
-
     border-radius: 16px;
 }
 
