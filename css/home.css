@@ -112,7 +112,6 @@ header {
 
 .cuarto:hover {
   transform: translateY(-10px);
-  /*le da ese efecto buenisimo a las tarjetas*/
   background-color: #e0d9d9;
 }
 
@@ -179,7 +178,6 @@ header {
 
 .servicio:hover {
   transform: translateY(-10px);
-  /*le da ese efecto buenisimo a las tarjetas*/
   background-color: #222;
 }
 
