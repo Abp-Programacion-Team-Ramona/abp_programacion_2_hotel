@@ -38,7 +38,7 @@ h1 {
 }
 
 h2 {
-     font-size: 2rem;
+    font-size: 2rem;
     margin-bottom: 40px;
     font-weight: 600;
     line-height: 1.2;
@@ -55,7 +55,15 @@ p {
 }
 
 footer {
-    height: 100px;
+    background-color: #0a0a0a;
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid #2a2a2a;
+}
+
+footer p {
+    color: #bdbdbd;
+    font-size: 14px;
 }
 
 
@@ -102,6 +110,7 @@ footer {
 .navbar a:hover {
     color: #666;
 }
+
 main div {
     display: inline-block;
     width: 250px;
@@ -124,6 +133,7 @@ main div {
 
     border-radius: 16px;
 }
+
 .linkedin {
     width: 35px;
     height: 35px;

@@ -23,16 +23,8 @@ header {
     top: 0;
 }
 
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .navbar ul {
-    flex-direction: row;
+    justify-content: flex-end;
     display: flex;
     gap: 40px;
     list-style: none;
@@ -153,5 +145,13 @@ main {
 
 
 footer {
-    height: 100px;
+    background-color: #0a0a0a;
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid #2a2a2a;
+}
+
+footer p {
+    color: #bdbdbd;
+    font-size: 14px;
 }
