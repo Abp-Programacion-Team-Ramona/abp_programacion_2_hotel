@@ -27,8 +27,8 @@ Este proyecto es una maqueta estática, por lo que no requiere instalación ni d
 1. Clonar o descargar el repositorio:
    git clone https://github.com/Abp-Programacion-Team-Ramona/abp_programacion_2_hotel
 2. Abrir la carpeta del proyecto.
-3. Para la vista del cliente, abrir `propuesta.html` en el navegador.
-4. Para la vista del administrador, abrir `dashboard_adm.html` en el navegador.
+3. Para la vista del cliente, abrir `proposal.html` en el navegador.
+4. Para la vista del administrador, abrir `admin_dashboard.html` en el navegador.
 
 No se requiere servidor local ni configuración adicional.
 
