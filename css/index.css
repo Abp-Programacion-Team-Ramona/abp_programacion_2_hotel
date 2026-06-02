@@ -21,7 +21,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* se me superponian las tarjetas de servicios con el navbar */
 }
 
 .navbar {
@@ -52,7 +51,6 @@ header {
   height: 90vh;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    /*para bajarle un toque la opacidad a la foto de fondo*/
     url("../assets/images/habitacion_home.jpg");
   background-size: cover;
   background-position: center;

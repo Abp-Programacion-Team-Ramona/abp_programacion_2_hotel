@@ -77,6 +77,12 @@ main {
     gap: 20px;
 }
 
+.sidebar button a,
+button a:visited {
+    color: white;
+    text-decoration: none;
+}
+
 .sidebar h2 {
     font-size: 1.8rem;
     margin-bottom: 10px;
