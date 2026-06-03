@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+:root {
+  --header-height: 64px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #121212;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*  Navbar */
+
+header .navbar {
+  background-color: rgba(10, 10, 10, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: var(--header-height);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .nav-link {
+  color: #e5e5e5 !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+header .nav-link:hover {
+  color: #ffffff !important;
+}
+
+/*  Register section  */
+
+.register-section {
+  flex: 1;
+  min-height: calc(100vh - var(--header-height));
+  background-color: #1a1a2e;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/images/fondo_register.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px;
+}
+
+/*  Card y Form  */
+
+.register-card {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  border: none;
+  background-color: #fff;
+}
+
+.title {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.form-control {
+  min-height: 45px;
+}
+
+.btn-primary {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+  min-height: 45px;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #333;
+  border-color: #444;
+  color: #fff;
+}
+
+.register-card a {
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.register-card a:hover {
+  color: #555;
+  text-decoration: underline;
+}
