@@ -45,8 +45,6 @@ h2 {
     margin-bottom: 40px;
     font-weight: 600;
     line-height: 1.2;
-    text-align: center;
-    text-decoration: underline;
 }
 
 p {
@@ -180,9 +178,9 @@ main div {
 
     text-decoration: none;
 
-   text-shadow:
-    10px 10px 20px rgba(2, 2, 2, 2.0),
-    0 0 20px rgba(0, 0, 0, 0.7);
+    text-shadow:
+        10px 10px 20px rgba(2, 2, 2, 2.0),
+        0 0 20px rgba(0, 0, 0, 0.7);
 }
 
 .lado-izquierdo img {

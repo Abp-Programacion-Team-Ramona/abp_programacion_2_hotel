@@ -1,163 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0f0f0f;
-    color: white;
-    line-height: 1.6;
-}
-
-
-header {
-    background-color: rgba(15, 15, 15, 0.8);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    border-bottom: 1px solid #2a2a2a;
-    padding: 20px 60px;
-    top: 0;
-}
-
-.navbar ul {
-    justify-content: flex-end;
-    display: flex;
-    gap: 40px;
-    list-style: none;
-}
-
-.navbar img {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #e5e5e5;
-    font-weight: 500;
-    transition: 0.2s ease;
-}
-
-.navbar a:hover {
-    color: #888;
-}
-
-
-main {
-    max-width: 1200px;
-
-    margin: auto;
-    padding: 60px 20px;
-
-    display: flex;
-    gap: 40px;
-}
-
-
 .sidebar {
-    width: 300px;
-
     background-color: #181818;
-
     padding: 30px;
-
     border-radius: 20px;
-
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.sidebar button a,
-button a:visited {
-    color: white;
-    text-decoration: none;
-}
 
 .sidebar h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    margin-left: 50px;
+    text-align: center;
 }
-
-.sidebar button {
-    background-color: #232323;
-
-    color: white;
-
-    border: 1px solid #333;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    cursor: pointer;
-
-    font-size: 1rem;
-    font-weight: 500;
-
-    transition: 0.2s ease;
-}
-
-.sidebar button:hover {
-    background-color: #2d2d2d;
-}
-
 
 .panel-content {
-    flex: 1;
-
     background-color: #181818;
-
     padding: 40px;
-
     border-radius: 20px;
-}
-
-.panel-content h1 {
-    font-size: 3rem;
-
-    margin-bottom: 20px;
-
-    line-height: 1.1;
-}
-
-.panel-content p {
-    color: #a1a1aa;
-
-    margin-bottom: 30px;
-
-    max-width: 700px;
+    margin-left: 100px;
 }
 
 .panel-content img {
     width: 100%;
-
     border-radius: 16px;
-
-    height: 500px;
-
+    height: 575px;
     object-fit: cover;
-}
-
-
-footer {
-    background-color: #0a0a0a;
-    padding: 30px;
-    text-align: center;
-    border-top: 1px solid #2a2a2a;
-}
-
-footer p {
-    color: #bdbdbd;
-    font-size: 14px;
 }
