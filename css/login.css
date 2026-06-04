@@ -110,3 +110,44 @@
 .lado-derecho button:hover {
     background-color: #bdbdbd;
 }
+
+.form-check {
+    color: white;
+}
+
+.form-check-input {
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
+
+.form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    color: white;
+}
+
+.registro-link {
+    text-align: center;
+    margin-top: 15px;
+
+    color: #a1a1aa;
+}
+
+.registro-link a {
+    color: #0d6efd;
+
+    text-decoration: none;
+
+    font-weight: 500;
+}
+
+.registro-link a:hover {
+    text-decoration: underline;
+}
