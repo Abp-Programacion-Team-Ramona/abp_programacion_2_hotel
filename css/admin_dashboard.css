@@ -1,66 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0f0f0f;
-    color: white;
-    line-height: 1.6;
-}
-
-header {
-    background-color: rgba(15, 15, 15, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #e5e5e5;
-    padding: 20px 60px;
-    position: sticky;
-    top: 0;
-}
-
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 60px 20px;
-}
-
-h1 {
-    font-size: 6rem;
-    text-align: center;
-    margin-bottom: 80px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    line-height: 0.9;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: 600;
-    line-height: 1.2;
-}
-
 p {
     color: #a1a1aa;
     font-size: 1.05rem;
 }
-
-footer {
-    background-color: #0a0a0a;
-    padding: 30px;
-    text-align: center;
-    border-top: 1px solid #2a2a2a;
-}
-
-footer p {
-    color: #bdbdbd;
-    font-size: 14px;
-}
-
 
 .section-1,
 .section-2 {
@@ -84,60 +25,11 @@ footer p {
     flex: 1;
 }
 
-.imagenes_proposal {
-    width: 50%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 16px;
-}
-
-.navbar ul {
-    display: flex;
-    justify-content: flex-end;
-    gap: 40px;
-    list-style: none;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: #e5e5e5;
-    font-weight: 500;
-    transition: 0.2s ease;
-}
-
-.navbar a:hover {
-    color: #666;
-}
-
-/* ---------- Navbar Extension ---------- */
-
-.navbar-brand {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #e5e5e5;
-    letter-spacing: 0.02em;
-    margin-right: auto;
-}
-
-.navbar ul {
-    justify-content: flex-end;
-}
-
-.nav-active {
-    color: #ffffff !important;
-    border-bottom: 1px solid #e5e5e5;
-    padding-bottom: 2px;
-}
-
-/* ---------- Layout principal ---------- */
-
 .dashboard-main {
     max-width: 1200px;
     margin: auto;
     padding: 60px 20px;
 }
-
-/* ---------- Encabezado del dashboard ---------- */
 
 .dashboard-header {
     display: flex;
@@ -178,8 +70,6 @@ footer p {
     font-size: 0.95rem;
     font-weight: 500;
 }
-
-/* ---------- Metricas ---------- */
 
 .metrics-grid {
     display: grid;
@@ -237,8 +127,6 @@ footer p {
     margin-bottom: 40px;
 }
 
-/* ---------- Vista: Grafico de barras ---------- */
-
 .section-visual {
     width: 50%;
     height: 320px;
@@ -277,7 +165,6 @@ footer p {
     flex: 1;
 }
 
-/* --h-num es un numero entre 0 y 1, ej: 0.65 para 65% */
 .bar {
     width: 100%;
     height: calc(200px * var(--h-num, 0.5));
@@ -300,8 +187,6 @@ footer p {
     font-size: 0.75rem;
     font-weight: 500;
 }
-
-/* ---------- Vista: Barras de servicios ---------- */
 
 .service-bars {
     display: flex;
@@ -347,7 +232,6 @@ footer p {
     flex-shrink: 0;
 }
 
-/* ---------- Lista de reservas ---------- */
 
 .reservas-list {
     display: flex;
@@ -400,7 +284,6 @@ footer p {
     border-color: #2a2a2a;
 }
 
-/* ---------- Lista de info ---------- */
 
 .info-list {
     list-style: none;
@@ -438,54 +321,4 @@ footer p {
 
 .info-dot-alert {
     background-color: #fbbf24;
-}
-
-/* ---------- Responsive-revision---------- */
-
-@media (max-width: 900px) {
-    .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .section-1,
-    .section-2 {
-        flex-direction: column !important;
-    }
-
-    .section-visual {
-        width: 100%;
-        min-height: 260px;
-    }
-
-    .dashboard-title {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 560px) {
-    .metrics-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-    }
-
-    .metric-card {
-        padding: 24px 20px;
-    }
-
-    .metric-value {
-        font-size: 2.2rem;
-    }
-
-    .dashboard-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .dashboard-date {
-        text-align: left;
-    }
-
-    .dashboard-title {
-        font-size: 1.8rem;
-    }
 }

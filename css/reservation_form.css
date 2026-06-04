@@ -1,48 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 .reservation-form h1 {
-    text-align: center;
     margin-bottom: 10px;
 }
 
 body {
     position: relative;
-    font-family: 'Inter', sans-serif;
-
     background-image: url("../assets/images/beach_background.webp");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-
     color: white;
-
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 40px;
 }
 
 body::before {
     content: "";
-
     position: fixed;
     inset: 0;
-
     background: rgba(0, 0, 0, 0.65);
-
     z-index: -1;
 }
-
-
 
 .reservation-form {
     width: 100%;
