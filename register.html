@@ -1,131 +1,79 @@
 <!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/register.css" />
-    <title>Registrate</title>
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark px-4">
-        <button
-          class="navbar-toggler ms-auto"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#menuPrincipal"
-          aria-controls="menuPrincipal"
-          aria-expanded="false"
-          aria-label="Abrir menú"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
-          <ul class="navbar-nav gap-3">
-            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="proposal.html">Nuestra propuesta</a></li>
-            <li class="nav-item"><a class="nav-link" href="about_us.html">Sobre nosotros</a></li>
-            <li class="nav-item"><a class="nav-link" href="admin_dashboard.html">Estadísticas</a></li>
-          </ul>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/register.css">
+  <title>Regístrate</title>
+</head>
+
+<body>
+  <header>
+    <nav class="main-navbar">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="proposal.html">Nuestra propuesta</a></li>
+        <li><a href="about_us.html">Sobre nosotros</a></li>
+        <li><a href="admin_dashboard.html">Estadisticas</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="register-card">
+
+      <h1 class="register-title">Crea tu cuenta</h1>
+      <p class="register-subtitle">Registrate para realizar una reserva.</p>
+
+      <div class="group">
+        <label class="label">Nombre</label>
+        <div class="row">
+          <input type="text" placeholder="Nombre">
+          <input type="text" placeholder="Apellidos">
         </div>
-      </nav>
-    </header>
+      </div>
 
-    <main>
-      <section class="register-section">
-        <div class="container">
-          <div class="card mx-auto p-4 register-card">
-            <h1 class="text-center mb-2">Crea una cuenta</h1>
-
-            <p class="text-center text-muted mb-4">
-              Registrate para hacer tu reserva.
-            </p>
-
-            <form class="row g-4" action="/registro" method="POST">
-              <div class="col-md-6">
-                <label for="nombre" class="form-label title">Nombre</label>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  class="form-control"
-                  placeholder="Nombre"
-                  autocomplete="given-name"
-                />
-              </div>
-
-              <div class="col-md-6">
-                <label for="apellido" class="form-label title">Apellido</label>
-                <input
-                  type="text"
-                  id="apellido"
-                  name="apellido"
-                  class="form-control"
-                  placeholder="Apellido"
-                  autocomplete="family-name"
-                />
-              </div>
-
-              <div class="col-12">
-                <label for="fecha_nac" class="form-label title">Fecha de nacimiento</label>
-                <input
-                  type="date"
-                  id="fecha_nac"
-                  name="fecha_nac"
-                  class="form-control"
-                  autocomplete="bday"
-                />
-              </div>
-
-              <div class="col-12">
-                <label for="email" class="form-label title">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-control"
-                  placeholder="Correo electrónico"
-                  autocomplete="email"
-                />
-              </div>
-
-              <div class="col-12">
-                <label for="contrasena" class="form-label title">Contraseña</label>
-                <input
-                  type="password"
-                  id="contrasena"
-                  name="contrasena"
-                  class="form-control"
-                  placeholder="Contraseña"
-                  autocomplete="new-password"
-                />
-              </div>
-
-              <div class="col-12">
-                <button class="btn btn-primary w-100" type="submit">
-                  Enviar
-                </button>
-              </div>
-
-              <div class="col-12 text-center">
-                <a href="login.html">Ya tengo una cuenta</a>
-              </div>
-            </form>
-          </div>
+      <div class="group">
+        <label class="label">Fecha de nacimiento</label>
+        <div class="date-row">
+          <select>
+            <option value="">Día</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <select>
+            <option value="">Mes</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+          <select>
+            <option value="">Año</option>
+            <option value="1990">1990</option>
+            <option value="1985">1985</option>
+            <option value="1980">1980</option>
+          </select>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+      <div class="group">
+        <label class="label">Correo electrónico</label>
+        <input type="email" placeholder="Correo electrónico">
+      </div>
+
+      <div class="group">
+        <label class="label">Contraseña</label>
+        <input type="password" placeholder="Contraseña">
+      </div>
+      <a href="login.html">
+      <button class="btn-submit">Enviar</button>
+      </a>
+      <a href="login.html">
+      <button class="btn-login">Ya tengo una cuenta</button>
+      </a>
+    </div>
+  </main>
+</body>
