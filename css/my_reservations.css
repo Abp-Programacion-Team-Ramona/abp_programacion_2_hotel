@@ -1,0 +1,136 @@
+.search-bar label {
+    font-size: 0.9rem;
+    color: #aaa;
+    letter-spacing: 0.4px;
+}
+
+.search-input-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.search-input {
+    flex: 1;
+    background-color: #222;
+    border: 1px solid #2e2e2e;
+    border-radius: 10px;
+    padding: 10px 16px;
+    color: #e5e5e5;
+    font-size: 0.95rem;
+    max-width: 340px;
+}
+
+.search-input::placeholder {
+    color: #555;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.btn-search {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #e5e5e5;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-search:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.service-tag {
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.reservation-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.btn-res {
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    border: 1px solid #333;
+    background: transparent;
+    color: #ccc;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-res:hover {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.btn-modify {
+    border-color: #3a3a5c;
+    color: #9090d0;
+}
+
+.btn-modify:hover {
+    background-color: #1e1e38;
+    color: #b0b0e8;
+}
+
+.btn-cancel {
+    border-color: #5c2a2a;
+    color: #d07070;
+}
+
+.btn-cancel:hover {
+    background-color: #3a1a1a;
+    color: #e89090;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .search-input {
+        max-width: 100%;
+    }
+
+    .search-input-wrapper {
+        flex-direction: column;
+    }
+
+    .reservation-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-res {
+        width: 100%;
+        text-align: center;
+    }
+}
