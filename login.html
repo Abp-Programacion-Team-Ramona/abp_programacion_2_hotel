@@ -10,39 +10,31 @@
     <title>Iniciar sesion</title>
 </head>
 
-<body>
+<body class="login-page">
 
     <header>
         <nav class="main-navbar">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="proposal.html">Nuestra propuesta</a></li>
-                <li><a href="about_us.html">Sobre nosotros</a></li>
+                <li><a href="proposal.html">Propuesta</a></li>
+                <li><a href="about_us.html">Nosotros</a></li>
                 <li><a href="admin_dashboard.html">Estadisticas</a></li>
                 <li><a href="register.html">Registrarse</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="contenedor-login">
+    <main class="login-container">
 
-        <section class="lado-izquierdo">
-
-            <img class="img-login" src="assets/images/hotel.jpg" alt="Hotel Ramona">
-
-            <h2 class="slogan">Tu hogar lejos de casa</h2>
-
-        </section>
-
-        <section class="lado-derecho">
+        <div class="login-card">
 
             <h1>Iniciar Sesión</h1>
 
             <form action="user_dashboard.html">
 
-                <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                <input type="email" class="form-control mb-3" placeholder="Correo electrónico">
 
-                <input type="password" class="form-control" placeholder="Contraseña" required>
+                <input type="password" class="form-control mb-3" placeholder="Contraseña">
 
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="recordarme">
@@ -50,6 +42,7 @@
                         Recordarme
                     </label>
                 </div>
+
                 <button type="submit" class="btn btn-light w-100">
                     Iniciar
                 </button>
@@ -61,7 +54,7 @@
 
             </form>
 
-        </section>
+        </div>
 
     </main>
 

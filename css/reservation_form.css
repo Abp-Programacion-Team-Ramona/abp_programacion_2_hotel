@@ -2,6 +2,10 @@
     margin-bottom: 10px;
 }
 
+h2 {
+    text-align: center;
+}
+
 body {
     background-image: url("../assets/images/beach_background.webp");
     background-size: cover;
@@ -44,6 +48,22 @@ body::before {
     gap: 25px;
 }
 
+@media (max-width: 576px) {
+
+    .reservation-container {
+        padding: 15px;
+    }
+
+    .reservation-form {
+        padding: 20px;
+    }
+
+    .form-section {
+        padding: 18px;
+    }
+
+}
+
 .form-section {
     background-color: #202020;
 
@@ -58,7 +78,7 @@ body::before {
     gap: 12px;
 }
 
-.form-section h3 {
+.form-section h2 {
     margin-bottom: 10px;
 }
 
@@ -102,8 +122,8 @@ body::before {
 .radio-group,
 .checkbox-group {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .radio-group label,

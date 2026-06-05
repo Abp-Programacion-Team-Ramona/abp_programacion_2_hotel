@@ -16,11 +16,9 @@
         <nav class="main-navbar">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="proposal.html">Nuestra propuesta</a></li>
-                <li><a href="about_us.html">Sobre nosotros</a></li>
+                <li><a href="proposal.html">Propuesta</a></li>
+                <li><a href="about_us.html">Nosotros</a></li>
                 <li><a href="admin_dashboard.html">Estadisticas</a></li>
-                <li><a href="register.html">Registrarse</a></li>
-                <li><a href="login.html">Iniciar Sesion</a></li>
             </ul>
         </nav>
     </header>
@@ -28,20 +26,24 @@
     <main class="reservation-container">
         <form class="reservation-form">
             <h1>Nueva Reserva</h1>
-            <div class="form-section">
-                <h3>Detalles de la reserva</h3>
 
-                <label for="startDate">Desde</label>
-                <input type="date" id="startDate">
-
-                <label for="endDate">Hasta</label>
-                <input type="date" id="endDate">
-
-                <label for="guests">Cantidad de huéspedes</label>
-                <input type="number" id="guests" min="1">
+            <div class="row g-3">
+                <div class="col-12 col-md-4">
+                    <label for="startDate">Desde</label>
+                    <input type="date" id="startDate" class="form-control">
+                </div>
+                <div class="col-12 col-md-4">
+                    <label for="endDate">Hasta</label>
+                    <input type="date" id="endDate" class="form-control">
+                </div>
+                <div class="col-12 col-md-4">
+                    <label for="guests">Huéspedes</label>
+                    <input type="number" id="guests" class="form-control">
+                </div>
             </div>
+
             <div class="form-section">
-                <h3>Tipo de habitación</h3>
+                <h2>Tipo de habitación</h2>
 
                 <div class="radio-group">
                     <label>
@@ -55,20 +57,34 @@
                 </div>
             </div>
             <div class="form-section">
-                <h3>Servicios adicionales</h3>
-                <div class="checkbox-group">
-                    <label><input type="checkbox"> Menú diario</label>
-                    <label><input type="checkbox"> Cochera</label>
-                    <label><input type="checkbox"> Cuidado de niños</label>
-                    <label><input type="checkbox"> Gimnasio</label>
-                    <label><input type="checkbox"> Spa</label>
+                <h2>Servicios adicionales</h2>
+                <div class="row g-2">
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Menú diario</label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Cochera</label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Cuidado de niños</label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Gimnasio</label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Spa</label>
+                    </div>
                 </div>
             </div>
             <div class="form-section">
-                <h3>Observaciones</h3>
+                <h2>Observaciones</h2>
                 <textarea placeholder="Ingrese comentarios adicionales"></textarea>
             </div>
-            <button type="submit">
+            <button type="submit" class="btn btn-light w-100 py-3">
                 Confirmar reserva
             </button>
         </form>
