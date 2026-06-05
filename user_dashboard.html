@@ -17,15 +17,15 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="proposal.html">Propuesta</a></li>
                 <li><a href="about_us.html">Nosotros</a></li>
-                <li><a href="admin_dashboard.html">Estadisticas</a></li>
+                <li><a href="index.html">Cerrar Sesion</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="container py-5">
-        <div class="row">
+        <div class="row g-4">
 
-            <section class="col-3 sidebar">
+            <section class="col-12 col-md-4 col-lg-3 sidebar">
 
                 <h2 class="mb-4">Opciones</h2>
 
@@ -33,27 +33,49 @@
                     Reservar ahora
                 </a>
 
-                <button class="btn btn-dark">Datos de usuario</button>
+                <a href="my_reservations.html" class="btn btn-dark">Mis Reservas</a>
 
-                <button class="btn btn-dark">Mis Reservas</button>
+                <a href="support.html" class="btn btn-dark">Soporte</a>
 
-                <button class="btn btn-dark">Historial de Reservas</button>
-
-                <button class="btn btn-dark">Soporte</button>
-
-                <img src="assets/images/user_dashboard_sidebar.png" alt="Imagen de pie sidebar izquierda panel usuario">
+                <img src="assets/images/user_dashboard_sidebar.png" alt="Foto perfil">
+                <button class="btn btn-profile-outline">+ Agregar foto</button>
+                <button class="btn btn-profile-outline">✎ Cambiar foto</button>
             </section>
 
-
-
-            <section class="col panel-content">
+            <section class="col-12 col-md panel-content">
                 <h2 class="mb-4">Bienvenido a tu Panel de Usuario</h2>
-
                 <p class="mb-4">
                     Gestioná tus reservas, consultá tu historial y accedé a la
                     información de tu estadía desde un solo lugar.
                 </p>
-                <img src="assets/images/user_dashboard.png" alt="Panel de usuario del hotel">
+                <div class="profile-card">
+                    <h3 class="profile-card-title">Información del usuario</h3>
+                    <div class="profile-row">
+                        <div class="profile-group">
+                            <span class="profile-label">Nombre</span>
+                            <span class="profile-value">Ramona</span>
+                        </div>
+                        <div class="profile-group">
+                            <span class="profile-label">Apellidos</span>
+                            <span class="profile-value">Remon</span>
+                        </div>
+                    </div>
+                    <div class="profile-group">
+                        <span class="profile-label">Telefono</span>
+                        <span class="profile-value profile-value">0303456</span>
+                    </div>
+
+                    <div class="profile-group">
+                        <span class="profile-label">Fecha de nacimiento</span>
+                        <span class="profile-value">15 de Octubre de 1990</span>
+                    </div>
+
+                    <div class="profile-group">
+                        <span class="profile-label">Correo electrónico</span>
+                        <span class="profile-value">ramona@email.com</span>
+                    </div>
+
+                </div>
 
             </section>
 
