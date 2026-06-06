@@ -1,77 +1,99 @@
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 60px 20px;
+
+.ramona-section {
+  text-align: center;
+  padding: 80px 20px 40px;
 }
 
 h1 {
-    font-size: 6rem;
-    text-align: center;
-    margin-bottom: 80px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    line-height: 0.9;
+  font-size: clamp(2.8rem, 8vw, 6rem); 
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    font-weight: 600;
-    line-height: 1.2;
-    text-align: center;
-    text-decoration: underline;
+.divider {
+  width: 60px;
+  height: 2px;
+  background: #c9a96e;
+  margin: 2rem auto;
+  border: none;
+  opacity: 1;
 }
 
-p {
-    color: #a1a1aa;
-    font-size: 1.05rem;
-    text-align: center;
-    max-width: 900px;
-    margin: auto;
-}
-
-.imagenes_proposal {
-    width: 30%;
-    height: 320px;
-
-    object-fit: cover;
-
-    border-radius: 16px;
+.lead-text {
+  color: #a1a1aa;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.8;
 }
 
 
-main div {
-    display: inline-block;
-    width: 250px;
-
-    background-color: #181818;
-
-    padding: 20px;
-    margin: 15px;
-
-    border-radius: 20px;
-
-    text-align: center;
+.team-section {
+  padding: 20px 0 80px;
 }
 
-.imagenes_proposal {
-    width: 100%;
-    height: 250px;
-
-    object-fit: cover;
-
-    border-radius: 16px;
+.team-section h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
-.linkedin {
-    width: 35px;
-    height: 35px;
-
-    margin-top: 10px;
-
-    transition: 0.3s;
+.team-member {
+  background-color: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 28px 20px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* para que todas las cards tengan la misma altura en la fila */
 }
 
-.linkedin:hover {
-    transform: scale(1.1);
+.team-member:hover {
+  transform: translateY(-6px);
+  border-color: #c9a96e;
+  box-shadow: 0 16px 40px rgba(201, 169, 110, 0.12);
+}
+
+.team-member img.foto {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1.2rem;
+}
+
+.team-member h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.btn-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  color: #a1a1aa;
+  border-radius: 50px;
+  padding: 6px 18px;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-linkedin:hover {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  color: #0f0f0f;
+}
+
+.btn-linkedin img {
+  width: 18px;
+  height: 18px;
 }
