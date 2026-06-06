@@ -35,9 +35,7 @@ main {
   text-align: center;
 }
  
-.group {
-  margin-bottom: 16px;
-}
+
  
 .label {
   display: block;
@@ -56,17 +54,9 @@ main {
   flex: 1;
 }
  
-.date-row {
-  display: flex;
-  gap: 8px;
-}
- 
-.date-row select {
-  flex: 1;
-}
- 
 input[type="text"],
 input[type="email"],
+input[type= "date"],
 input[type="password"],
 input[type="tel"],
 select {
@@ -82,6 +72,9 @@ select {
  
  
 .btn-submit {
+  display: block;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
   padding: 12px;
   background-color: #000000;
@@ -95,12 +88,15 @@ select {
   margin-top: 8px;
   margin-bottom: 10px;
 }
- 
+
 .btn-submit:hover {
   background-color: #333333;
 }
- 
+
 .btn-login {
+  display: block;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
   padding: 12px;
   background-color: white;
@@ -111,7 +107,7 @@ select {
   font-family: Arial, sans-serif;
   cursor: pointer;
 }
- 
+
 .btn-login:hover {
   background-color: #f0f2f5;
 }
