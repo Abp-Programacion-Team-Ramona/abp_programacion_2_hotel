@@ -58,9 +58,13 @@ p {
     border: none;
     outline: none;
     background: transparent;
-    color: rgb(0, 0, 0);
+    color: white;
     flex: 1;
     box-shadow: none !important;
+}
+
+.search-input::placeholder {
+    color: #666;
 }
 
 
