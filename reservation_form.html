@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/reservation_form.css">
+    <title>Nueva Reserva</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="main-navbar">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="proposal.html">Propuesta</a></li>
+                <li><a href="about_us.html">Nosotros</a></li>
+                <li><a href="user_dashboard.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="reservation-container">
+        <form class="reservation-form">
+            <h1>Nueva Reserva</h1>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-4">
+                    <label for="startDate">Desde</label>
+                    <input type="date" id="startDate" class="form-control">
+                </div>
+                <div class="col-12 col-md-4">
+                    <label for="endDate">Hasta</label>
+                    <input type="date" id="endDate" class="form-control">
+                </div>
+                <div class="col-12 col-md-4">
+                    <label for="guests">Huéspedes</label>
+                    <input type="number" id="guests" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Tipo de habitación</h2>
+
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="room">
+                        Standard
+                    </label>
+                    <label>
+                        <input type="radio" name="room">
+                        Suite
+                    </label>
+                </div>
+            </div>
+            <div class="form-section">
+                <h2>Servicios adicionales</h2>
+                <div class="row g-2">
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Menú diario</label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Cochera</label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Cuidado de niños</label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Gimnasio</label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label><input type="checkbox"> Spa</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-section">
+                <h2>Observaciones</h2>
+                <textarea placeholder="Ingrese comentarios adicionales"></textarea>
+            </div>
+            <button type="submit" class="btn btn-light w-100 py-3">
+                Confirmar reserva
+            </button>
+        </form>
+    </main>
+
+</body>
+
+</html>

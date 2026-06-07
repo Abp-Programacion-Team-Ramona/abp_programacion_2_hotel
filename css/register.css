@@ -1,0 +1,113 @@
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+   url(../assets/images/register_background.jpg);
+   background-size: cover;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px;
+}
+ 
+.register-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 480px;
+}
+ 
+.register-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #1c1e21;
+}
+ 
+.register-subtitle {
+  font-size: 14px;
+  color: #606770;
+  margin-bottom: 24px;
+  line-height: 1.4;
+  text-align: center;
+}
+ 
+
+ 
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #1c1e21;
+}
+ 
+.row {
+  display: flex;
+  gap: 10px;
+}
+ 
+.row input {
+  flex: 1;
+}
+ 
+input[type="text"],
+input[type="email"],
+input[type= "date"],
+input[type="password"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #1c1e21;
+}
+ 
+ 
+.btn-submit {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 12px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.btn-submit:hover {
+  background-color: #333333;
+}
+
+.btn-login {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 12px;
+  background-color: white;
+  color: #000000;
+  border: 1px solid #ccd0d5;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: #f0f2f5;
+}

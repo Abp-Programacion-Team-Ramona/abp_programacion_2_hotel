@@ -1,0 +1,97 @@
+.support-input {
+    width: 100%;
+    background-color: #222;
+    border: 1px solid #2e2e2e;
+    border-radius: 10px;
+    padding: 10px 16px;
+    color: #e5e5e5;
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.support-input::placeholder {
+    color: #555;
+}
+
+.support-input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.support-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Radio buttons */
+.support-radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 6px;
+}
+
+.support-radio {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.reservation-actions {
+    display: flex;
+    gap: 12px;
+    padding-top: 8px;
+}
+
+.outer-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn-res {
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    border: 1px solid #333;
+    background: transparent;
+    color: #ccc;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-res:hover {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.btn-modify {
+    border-color: #3a3a5c;
+    color: #9090d0;
+}
+
+.btn-modify:hover {
+    background-color: #1e1e38;
+    color: #b0b0e8;
+}
+
+@media (max-width: 767px) {
+    .support-radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .reservation-actions,
+    .outer-actions {
+        flex-direction: column;
+    }
+
+    .btn-res {
+        width: 100%;
+        text-align: center;
+    }
+}

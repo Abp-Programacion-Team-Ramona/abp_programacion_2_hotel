@@ -1,0 +1,77 @@
+.login-page {
+    background-image: url("../assets/images/hotel.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.login-page::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    z-index: -1;
+}
+
+.login-container {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    backdrop-filter: blur(8px);
+
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.form-control {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: #2a2a2a;
+    color: white;
+    box-shadow: none;
+}
+
+
+.form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    color: white;
+}
+
+.form-check-input {
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
+
+p {
+    text-align: center;
+}
