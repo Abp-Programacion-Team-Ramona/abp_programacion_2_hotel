@@ -22,15 +22,10 @@ El problema que busca resolver es la falta de visibilidad y control sobre el est
 
 ## Instalación y ejecución
 
-Este proyecto es una maqueta estática, por lo que no requiere instalación ni dependencias externas.
-
 1. Clonar o descargar el repositorio:
    git clone https://github.com/Abp-Programacion-Team-Ramona/abp_programacion_2_hotel
-2. Abrir la carpeta del proyecto.
-3. Para la vista del cliente, abrir `proposal.html` en el navegador.
-4. Para la vista del administrador, abrir `admin_dashboard.html` en el navegador.
-
-No se requiere servidor local ni configuración adicional.
+2. Ubicarse en la carpeta "frontend" del proyecto: cd frontend en el cli
+3. Ejecutar ng serve --open
 
 ## Equipo
 
@@ -38,7 +33,3 @@ No se requiere servidor local ni configuración adicional.
 - Candela Blanco
 - Nicolas Oggero
 - Diego Mendia
-
-## Repositorio
-
-https://github.com/Abp-Programacion-Team-Ramona/abp_programacion_2_hotel
