@@ -19,6 +19,10 @@ export class ReservartionForm {
     parking: new FormControl(false),
     childcare: new FormControl(false),
     historyGuide: new FormControl(false),
+    transfer: new FormControl(false),
+    spaServices: new FormControl(false),
+    clothingCleaning: new FormControl(false),
+    gymPass: new FormControl(false),
     observations: new FormControl('')
   });
 }
