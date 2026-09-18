@@ -1,0 +1,36 @@
+<main>
+  <section class="ramona-section">
+    <div class="container">
+      <h1>Quiénes somos</h1>
+      <hr class="divider">
+      <p class="lead-text">
+        Somos el equipo <em>Ramona</em>, un grupo conformado por 4 estudiantes del Instituto Superior
+        Politécnico de Córdoba (ISPC). Actualmente cursamos el segundo año de carrera y nuestro objetivo
+        es construir una página web para el complejo hotelero Ramona, implementando los conocimientos
+        adquiridos en la materia.
+      </p>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <h2>Nuestro equipo</h2>
+
+      <div class="row g-4 justify-content-center">
+        @for (persona of teamList; track persona.id) {
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="team-member">
+              <img class="foto" [src]="persona.photo" [alt]="persona.name">
+              <h3>{{ persona.name }}</h3>
+              <a class="btn-linkedin" [href]="persona.linkedinUrl" target="_blank">
+                <img src="assets/images/linkedin.png" alt="LinkedIn"> LinkedIn
+              </a>
+            </div>
+          </div>
+        } @empty {
+          <p>No hay integrantes para mostrar.</p>
+        }
+      </div>
+    </div>
+  </section>
+</main>

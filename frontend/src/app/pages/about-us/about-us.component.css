@@ -1,0 +1,99 @@
+
+.ramona-section {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 8vw, 6rem); 
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: #c9a96e;
+  margin: 2rem auto;
+  border: none;
+  opacity: 1;
+}
+
+.lead-text {
+  color: #a1a1aa;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+
+.team-section {
+  padding: 20px 0 80px;
+}
+
+.team-section h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.team-member {
+  background-color: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 28px 20px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* para que todas las cards tengan la misma altura en la fila */
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+  border-color: #c9a96e;
+  box-shadow: 0 16px 40px rgba(201, 169, 110, 0.12);
+}
+
+.team-member img.foto {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1.2rem;
+}
+
+.team-member h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.btn-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  color: #a1a1aa;
+  border-radius: 50px;
+  padding: 6px 18px;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-linkedin:hover {
+  background: #c9a96e;
+  border-color: #c9a96e;
+  color: #0f0f0f;
+}
+
+.btn-linkedin img {
+  width: 18px;
+  height: 18px;
+}
