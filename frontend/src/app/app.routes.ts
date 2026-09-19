@@ -4,11 +4,13 @@ import { AdminDashboard } from './pages/admin-dashboard/admin-dashboard';
 import { NotFound } from './pages/not-found/not-found';
 import { Home } from './pages/home/home';
 import { ReservartionForm } from './pages/reservartion-form/reservartion-form';
+import { MyReservations } from './pages/my-reservations/my-reservations';
 
 export const routes: Routes = [
     { path: 'about-us', component: AboutUsComponent },
     { path: 'admin-dashboard', component: AdminDashboard },
     { path: '', component: Home },
     { path: 'reservation-form', component: ReservartionForm },
+    { path: 'my-reservations', component: MyReservations },
     { path: '**', component: NotFound },
 ];
