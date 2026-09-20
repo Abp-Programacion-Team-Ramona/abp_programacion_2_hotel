@@ -29,6 +29,19 @@
     }
   ],
   "payments": [],
-  "roles": [],
+  "roles": [
+    {
+      "id": "1",
+      "nombre": "Administrador"
+    },
+    {
+      "id": "2",
+      "nombre": "Empleado"
+    },
+    {
+      "id": "3",
+      "nombre": "Cliente"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

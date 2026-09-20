@@ -23,13 +23,6 @@
         </div>
       </div>
 
-      <div class="col-16">
-        <label class="label">Fecha de nacimiento</label>
-        <input type="date" id="startDate" formControlName="birthDate">
-        @if (registerForm.get('birthDate')?.invalid && registerForm.get('birthDate')?.touched) {
-        <span class="error-message">La fecha de nacimiento es obligatoria.</span>
-        }
-      </div>
 
       <div class="col-16">
         <label class="label">Número de teléfono</label>
@@ -55,7 +48,11 @@
         }
       </div>
 
-      <button type="button" routerLink="/login" class="btn-submit w-100 mt-3 border-0">Enviar</button>
+      @if (successMessage()) {
+      <div class="success-message">{{ successMessage() }}</div>
+      }
+
+      <button type="submit" class="btn-submit w-100 mt-3 border-0">Enviar</button>
 
       <a routerLink="/login" class="btn-login">Ya tengo una cuenta</a>
 
