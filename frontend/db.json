@@ -1,4 +1,15 @@
 {
+  "users": [
+    {
+    "id": "1",
+    "id_rol": "2",
+    "nombre": "Ramona",
+    "apellido": "Remon",
+    "email": "ramona@email.com",
+    "password": "1234",
+    "num_contacto": "0303456"
+  }
+  ],
 "users": [
   {
     "id": "1",
@@ -25,6 +36,7 @@
       "huespedes": 2,
       "observaciones": "Necesito que alguien cuide a mis hijos hasta el mediodia, viajo por trabajo",
       "estado": "pendiente",
+      "adicionales": ["Menú diario", "Cochera"],
       "adicionales": [
         "Menú diario",
         "Cochera"
@@ -44,6 +56,9 @@
     }
   ],
   "payments": [],
+  "roles": []
+  
+}
   "roles": [
     {
       "id": "1",
