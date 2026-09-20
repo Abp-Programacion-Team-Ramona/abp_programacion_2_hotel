@@ -1,0 +1,56 @@
+<main class="login-container">
+
+    <div class="login-card">
+
+        <h1>Iniciar Sesión</h1>
+
+        <form (ngSubmit)="iniciarSesion()">
+
+            <input
+                type="email"
+                class="form-control mb-3"
+                placeholder="Correo electrónico"
+                [(ngModel)]="email"
+                name="email"
+                required
+            >
+
+            <input
+                type="password"
+                class="form-control mb-3"
+                placeholder="Contraseña"
+                [(ngModel)]="password"
+                name="password"
+                required
+            >
+
+            <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="recordarme"
+                >
+
+                <label class="form-check-label" for="recordarme">
+                    Recordarme
+                </label>
+            </div>
+
+            <button
+             type="button"
+             class="btn btn-light w-100"
+            (click)="iniciarSesion()"
+            >
+             Iniciar
+            </button>
+
+            <p class="registro-link">
+                ¿Todavía no te registraste?
+                <a routerLink="/register">Registrate</a>
+            </p>
+
+        </form>
+
+    </div>
+
+</main>

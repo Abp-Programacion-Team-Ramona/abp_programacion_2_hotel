@@ -10,6 +10,22 @@
     "num_contacto": "0303456"
   }
   ],
+"users": [
+  {
+    "id": "1",
+    "nombre": "Administrador",
+    "email": "admin@ramona.com",
+    "password": "1234",
+    "id_rol": 1
+  },
+  {
+    "id": "2",
+    "nombre": "Cliente",
+    "email": "cliente@ramona.com",
+    "password": "1234",
+    "id_rol": 3
+  }
+],
   "rooms": [],
   "reservations": [
     {
@@ -21,6 +37,10 @@
       "observaciones": "Necesito que alguien cuide a mis hijos hasta el mediodia, viajo por trabajo",
       "estado": "pendiente",
       "adicionales": ["Menú diario", "Cochera"],
+      "adicionales": [
+        "Menú diario",
+        "Cochera"
+      ],
       "id": "fnMXTesqDNg"
     },
     {
@@ -38,4 +58,20 @@
   "payments": [],
   "roles": []
   
+}
+  "roles": [
+    {
+      "id": "1",
+      "nombre": "Administrador"
+    },
+    {
+      "id": "2",
+      "nombre": "Empleado"
+    },
+    {
+      "id": "3",
+      "nombre": "Cliente"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
