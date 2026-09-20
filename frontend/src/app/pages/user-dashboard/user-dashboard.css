@@ -8,6 +8,11 @@
     margin-left: -16px;
 }
 
+.sidebar img {
+    max-width: 100%;
+    height: auto;
+}
+
 .panel-content {
     background-color: #181818;
     padding: 32px;
@@ -71,4 +76,8 @@
     .profile-row {
         flex-direction: column;
     }
+}
+
+.state-message {
+    color: #aaa;
 }

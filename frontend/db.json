@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+    "id": "1",
+    "id_rol": "2",
+    "nombre": "Ramona",
+    "apellido": "Remon",
+    "email": "ramona@email.com",
+    "password": "1234",
+    "num_contacto": "0303456"
+  }
+  ],
+  "rooms": [],
+  "reservations": [
+    {
+      "id_usuario": "1",
+      "id_habitacion": "101",
+      "desde": "2026-09-23",
+      "hasta": "2026-09-25",
+      "huespedes": 2,
+      "observaciones": "Necesito que alguien cuide a mis hijos hasta el mediodia, viajo por trabajo",
+      "estado": "pendiente",
+      "adicionales": ["Menú diario", "Cochera"],
+      "id": "fnMXTesqDNg"
+    },
+    {
+      "id_usuario": "1",
+      "id_habitacion": "101",
+      "desde": "2026-09-23",
+      "hasta": "2026-09-29",
+      "huespedes": 1,
+      "observaciones": "xd",
+      "estado": "pendiente",
+      "adicionales": [],
+      "id": "F4bU5Z7O13Y"
+    }
+  ],
+  "payments": [],
+  "roles": []
+  
+}
