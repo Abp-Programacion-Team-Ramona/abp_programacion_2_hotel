@@ -1,5 +1,20 @@
 {
-  "users": [],
+"users": [
+  {
+    "id": "1",
+    "nombre": "Administrador",
+    "email": "admin@ramona.com",
+    "password": "1234",
+    "id_rol": 1
+  },
+  {
+    "id": "2",
+    "nombre": "Cliente",
+    "email": "cliente@ramona.com",
+    "password": "1234",
+    "id_rol": 3
+  }
+],
   "rooms": [],
   "reservations": [
     {
