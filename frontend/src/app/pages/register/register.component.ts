@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 import { User } from './models/user.model';
 
 @Component({
@@ -12,16 +12,16 @@ import { User } from './models/user.model';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  successMessage = signal('');
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private userService: UserService,
     private router: Router
   ) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      birthDate: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -32,18 +32,19 @@ export class RegisterComponent {
     event.preventDefault();
 
     if (this.registerForm.valid) {
-      console.log('Sending data to server...');
-      
-      this.authService.createUser(this.registerForm.value as User).subscribe({
+      const userData = {
+        ...this.registerForm.value,
+        id_rol: '3'
+      };
+
+      this.userService.createUser(userData as User).subscribe({
         next: (data) => {
           if (data) {
-            alert('Registration completed successfully. Please log in to continue.');
-            this.router.navigate(['/login']);
+            this.successMessage.set('¡Usuario creado correctamente!');
+            setTimeout(() => this.router.navigate(['/login']), 2500);
           }
         },
-        error: (err) => {
-          console.error('Error registering user:', err);
-        }
+        error: (err) => console.error('Error registering user:', err)
       });
     } else {
       this.registerForm.markAllAsTouched();
