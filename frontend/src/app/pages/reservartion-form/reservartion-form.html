@@ -1,8 +1,8 @@
 <main class="reservation-container">
-    <form class="reservation-form" [formGroup]="reservationForm">
+    <form class="reservation-form" [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
         <h1>Registrar Nueva Reserva</h1>
 
-        <div class="row g-3">
+        <div class=" row g-3">
             <div class="col-12 col-md-4">
                 <label for="startDate">Desde</label>
                 <input type="date" id="startDate" class="form-control" formControlName="startDate" [min]="minDate">
@@ -10,7 +10,7 @@
                 reservationForm.controls.startDate.invalid &&
                 reservationForm.controls.startDate.touched
                 ) {
-                <small>La fecha de inicio es obligatoria.</small>
+                <small class="error-message">La fecha de inicio es obligatoria.</small>
                 }
             </div>
             <div class="col-12 col-md-4">
@@ -21,7 +21,7 @@
                 reservationForm.controls.endDate.invalid &&
                 reservationForm.controls.endDate.touched
                 ) {
-                <small>La fecha de fin es obligatoria.</small>
+                <small class="error-message">La fecha de fin es obligatoria.</small>
                 }
             </div>
             <div class="col-12 col-md-4">
@@ -31,7 +31,7 @@
                 reservationForm.controls.guests.invalid &&
                 reservationForm.controls.guests.touched
                 ) {
-                <small>El minimo de huespedes es 1 y el maximo 6.</small>
+                <small class="error-message">El minimo de huespedes es 1 y el maximo 6.</small>
                 }
             </div>
         </div>
@@ -61,10 +61,38 @@
                     </label>
                 </div>
 
-                <div class="col-12 ">
+                <div class="col-12 col-md-6">
                     <label class="service-option">
                         <input type="checkbox" formControlName="historyGuide">
-                        <span>Paseo histórico a caballo (sujeto a disponibilidad)</span>
+                        <span>Guia turistico</span>
+                    </label>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="service-option">
+                        <input type="checkbox" formControlName="transfer">
+                        <span>Traslado desde/hacia terminal</span>
+                    </label>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="service-option">
+                        <input type="checkbox" formControlName="spaServices">
+                        <span>Spa y Masajes</span>
+                    </label>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="service-option">
+                        <input type="checkbox" formControlName="clothingCleaning">
+                        <span>Lavanderia</span>
+                    </label>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="service-option">
+                        <input type="checkbox" formControlName="gymPass">
+                        <span>Pase gimnasio</span>
                     </label>
                 </div>
 
@@ -78,5 +106,16 @@
         <button type="submit" class="btn btn-light w-100 py-3">
             Confirmar reserva
         </button>
+        @if (successMessage) {
+        <p class="success-message">
+            {{ successMessage }}
+        </p>
+        }
+
+        @if (errorMessage) {
+        <p class="error-message">
+            {{ errorMessage }}
+        </p>
+        }
     </form>
 </main>

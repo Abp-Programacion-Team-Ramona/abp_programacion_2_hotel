@@ -1,35 +1,42 @@
 erDiagram
-    CLIENTES ||--|| RESERVAS : realiza
-    CABANAS ||--o{ RESERVAS : recibe
+    ROLES ||--o{ USUARIOS : asignado
+    USUARIOS ||--o{ RESERVAS : realiza
+    HABITACIONES ||--o{ RESERVAS : recibe
     RESERVAS ||--o| PAGOS : tiene
-    ROLES ||--o{ EMPLEADOS : asignado
 
-    CLIENTES {
+    USUARIOS {
         uuid id PK
-        string num_contacto
-        string email
+        uuid id_rol FK
         string nombre
         string apellido
-        string observaciones
+        string email
+        string password
+        string num_contacto
     }
 
-    CABANAS {
+    ROLES {
         uuid id PK
+        string descripcion
+    }
+
+    HABITACIONES {
+        uuid id PK
+        int numero
+        string tipo
         int capacidad
-        int habitaciones
-        boolean disponible
+        decimal precio
     }
 
     RESERVAS {
         uuid id PK
-        uuid id_cliente FK
-        uuid id_cabana FK
-        uuid id_pago FK
+        uuid id_usuario FK
+        uuid id_habitacion FK
         string observaciones
         string estado
         string adicionales
         date desde
         date hasta
+        int huespedes
     }
 
     PAGOS {
@@ -37,17 +44,5 @@ erDiagram
         uuid id_reserva FK
         string medio
         string estado
-        string cupon
-    }
-
-    EMPLEADOS {
-        uuid id PK
-        uuid id_rol FK
-        string nombre
-        string apellido
-    }
-
-    ROLES {
-        uuid id PK
-        string descripcion
+        decimal monto
     }

@@ -3,8 +3,13 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AdminDashboard } from './pages/admin-dashboard/admin-dashboard';
 import { NotFound } from './pages/not-found/not-found';
 import { Home } from './pages/home/home';
+import { RegisterComponent } from './pages/register/register.component';
 import { ReservartionForm } from './pages/reservartion-form/reservartion-form';
 import { MyReservations } from './pages/my-reservations/my-reservations';
+import { UserDashboard } from './pages/user-dashboard/user-dashboard';
+import { Login } from './pages/login/login';
+
+
 
 export const routes: Routes = [
     { path: 'about-us', component: AboutUsComponent },
@@ -12,5 +17,8 @@ export const routes: Routes = [
     { path: '', component: Home },
     { path: 'reservation-form', component: ReservartionForm },
     { path: 'my-reservations', component: MyReservations },
+    { path: 'user-dashboard', component: UserDashboard },
+    { path: 'register', component: RegisterComponent},
+    { path: 'login', component: Login },
     { path: '**', component: NotFound },
 ];
