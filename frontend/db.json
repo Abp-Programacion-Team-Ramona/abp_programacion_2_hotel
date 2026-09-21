@@ -8,15 +8,6 @@
       "email": "admin@ramona.com",
       "password": "1234",
       "num_contacto": "0303456"
-    },
-    {
-      "nombre": "cande",
-      "apellido": "nico",
-      "num_contacto": "123456789",
-      "email": "diego@marco",
-      "password": "123456",
-      "id_rol": "3",
-      "id": "_7NS3iPyskI"
     }
   ],
   "rooms": [
@@ -42,22 +33,7 @@
       "precio": 110000
     }
   ],
-  "reservations": [
-    {
-      "id_usuario": "_7NS3iPyskI",
-      "id_habitacion": "101",
-      "desde": "2026-09-22",
-      "hasta": "2026-09-24",
-      "huespedes": 2,
-      "observaciones": "ultiam vuelta",
-      "estado": "pendiente",
-      "adicionales": [
-        "Cochera",
-        "Paseo histórico"
-      ],
-      "id": "YnHmB-fPQBw"
-    }
-  ],
+  "reservations": [],
   "payments": [],
   "roles": [
     {
