@@ -1,0 +1,72 @@
+<main>
+  <div class="register-card">
+    <h1 class="register-title text-center">Crea tu cuenta</h1>
+    <p class="register-subtitle">Registrate para realizar una reserva.</p>
+
+    <form [formGroup]="registerForm" (submit)="onSubmit($event)">
+
+      <div class="row g-2">
+        <div class="col-16">
+          <label class="label">Nombre</label>
+          <input type="text" placeholder="Ramona" formControlName="firstName">
+          @if (registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched) {
+          <span class="error-message">El nombre es obligatorio.</span>
+          }
+        </div>
+
+        <div class="col-16">
+          <label class="label">Apellidos</label>
+          <input type="text" placeholder="Edudud" formControlName="lastName">
+          @if (registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched) {
+          <span class="error-message">El apellido es obligatorio.</span>
+          }
+        </div>
+      </div>
+
+
+      <div class="col-16">
+        <label class="label">Número de teléfono</label>
+        <input type="tel" formControlName="phone">
+        @if (registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched) {
+        <span class="error-message">El teléfono es obligatorio.</span>
+        }
+      </div>
+
+      <div class="col-16">
+        <label class="label">Correo electrónico</label>
+        <input type="email" placeholder="correo@dominio.com" formControlName="email">
+        @if (registerForm.get('email')?.touched &&
+        registerForm.get('email')?.invalid) {
+        <small class="text-danger">
+          Formato de correo invalido
+        </small>
+        }
+      </div>
+
+      <div class="col-16">
+        <label class="label">Contraseña</label>
+        <input type="password" placeholder="******" formControlName="password">
+        @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+        <span class="error-message">La contraseña debe tener al menos 6 caracteres.</span>
+        }
+      </div>
+
+      @if (successMessage()) {
+      <div class="success-message">{{ successMessage() }}</div>
+      }
+
+      <button type="submit" class="btn btn-light w-100 mt-3" [disabled]="isLoading()">
+
+        @if (isLoading()) {
+        Creando usuario...
+        } @else {
+        Registrarse
+        }
+
+      </button>
+
+      <a routerLink="/login" class="btn-login">Ya tengo una cuenta</a>
+
+    </form>
+  </div>
+</main>

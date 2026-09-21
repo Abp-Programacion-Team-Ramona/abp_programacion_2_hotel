@@ -1,0 +1,53 @@
+<main class="container py-5">
+  <div class="row g-4 gap-3">
+
+    <section class="col-12 col-md-4 col-lg-3 sidebar">
+      <h1 class="mb-4">Opciones</h1>
+
+      <a routerLink="/reservation-form" class="btn btn-primary">Reservar ahora</a>
+      <a routerLink="/my-reservations" class="btn btn-dark">Mis Reservas</a>
+
+      <img src="assets/images/ramona.jpg" alt="Foto perfil">
+    </section>
+
+    <section class="col-12 col-md panel-content">
+      <h2 class="mb-4">Bienvenido a tu Panel de Usuario</h2>
+      <p class="mb-4">
+        Gestioná tus reservas, consultá tu historial y accedé a la
+        información de tu estadía desde un solo lugar.
+      </p>
+
+      @if (loading()) {
+        <p class="state-message">Cargando datos...</p>
+      } @else if (error()) {
+        <p class="state-message">{{ error() }}</p>
+      } @else if (user(); as u) {
+        <div class="profile-card">
+          <h3 class="profile-card-title">Información del usuario</h3>
+
+          <div class="profile-row">
+            <div class="profile-group">
+              <span class="profile-label">Nombre</span>
+              <span class="profile-value">{{ u.nombre }}</span>
+            </div>
+            <div class="profile-group">
+              <span class="profile-label">Apellidos</span>
+              <span class="profile-value">{{ u.apellido }}</span>
+            </div>
+          </div>
+
+          <div class="profile-group">
+            <span class="profile-label">Teléfono</span>
+            <span class="profile-value">{{ u.num_contacto }}</span>
+          </div>
+
+          <div class="profile-group">
+            <span class="profile-label">Correo electrónico</span>
+            <span class="profile-value">{{ u.email }}</span>
+          </div>
+        </div>
+      }
+    </section>
+
+  </div>
+</main>

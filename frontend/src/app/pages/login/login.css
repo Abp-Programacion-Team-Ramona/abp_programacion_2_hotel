@@ -1,0 +1,131 @@
+.login-page {
+    background-image: url("../../../../public/assets/images/hotel.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.login-page::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    z-index: -1;
+}
+
+.login-container {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    backdrop-filter: blur(8px);
+
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.form-control {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: #2a2a2a;
+    color: white;
+    box-shadow: none;
+}
+
+
+.form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    color: white;
+}
+
+.form-check-input {
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
+
+.login-card p {
+    text-align: center;
+}
+
+.login-card {
+    color: #e5e5e5;
+}
+
+.login-card h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-card p {
+    color: #bdbdbd;
+}
+
+.login-card a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-card a:hover {
+    color: #bdbdbd;
+    text-decoration: underline;
+}
+
+.login-card .form-control {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+.login-card .form-control::placeholder {
+    color: #999999;
+}
+
+.login-card .form-check-label {
+    color: #e5e5e5;
+}
+
+.registro-link {
+    margin-top: 20px;
+    color: #bdbdbd;
+}
+
+.login-error {
+    background-color: rgba(220, 53, 69, 0.15);
+    border: 1px solid #dc3545;
+    color: #ff8a95;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 0.9rem;
+}

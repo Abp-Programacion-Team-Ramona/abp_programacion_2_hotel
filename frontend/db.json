@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "id_rol": "1",
+      "nombre": "Administrador",
+      "apellido": "Ramona",
+      "email": "admin@ramona.com",
+      "password": "1234",
+      "num_contacto": "0303456"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "101",
+      "numero": 101,
+      "tipo": "Simple",
+      "capacidad": 2,
+      "precio": 50000
+    },
+    {
+      "id": "102",
+      "numero": 102,
+      "tipo": "Familiar",
+      "capacidad": 4,
+      "precio": 80000
+    },
+    {
+      "id": "103",
+      "numero": 103,
+      "tipo": "Familiar",
+      "capacidad": 6,
+      "precio": 110000
+    }
+  ],
+  "reservations": [],
+  "payments": [],
+  "roles": [
+    {
+      "id": "1",
+      "nombre": "Administrador"
+    },
+    {
+      "id": "2",
+      "nombre": "Empleado"
+    },
+    {
+      "id": "3",
+      "nombre": "Cliente"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

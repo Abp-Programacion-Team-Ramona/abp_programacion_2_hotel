@@ -1,0 +1,82 @@
+<main class="container py-5">
+
+  <h1 class="mb-2">Mis Reservas</h1>
+  <p class="mb-4">Consultá el detalle de tus reservas ingresando el código correspondiente.</p>
+
+  <div class="search-bar mb-4">
+    <label class="mb-1 d-block" for="reservation-code">Buscar por código de reserva</label>
+    <div class="search-input-wrapper">
+      <input #codeInput id="reservation-code" type="text" class="search-input" placeholder="Ej: fnMXTesqDNg"
+        (keyup.enter)="search(codeInput.value)">
+      <button class="btn-search" type="button" (click)="search(codeInput.value)">Buscar</button>
+    </div>
+  </div>
+
+  @if (loading()) {
+  <p class="state-message">Cargando reservas...</p>
+  } @else if (error()) {
+  <p class="state-message">{{ error() }}</p>
+  } @else {
+  @for (res of filtered(); track res.id) {
+  <div class="profile-card mb-4">
+    <h2 class="profile-card-title">Detalle de Reserva</h2>
+
+    <div class="profile-row">
+      <div class="profile-group">
+        <span class="profile-label">Código de Reserva</span>
+        <span class="profile-value">{{ res.id }}</span>
+      </div>
+      <div class="profile-group">
+        <span class="profile-label">Estado</span>
+        <span class="profile-value status-badge">{{ res.estado }}</span>
+      </div>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-group">
+        <span class="profile-label">Desde</span>
+        <span class="profile-value">{{ res.desde | date: 'dd/MM/yyyy' }}</span>
+      </div>
+      <div class="profile-group">
+        <span class="profile-label">Hasta</span>
+        <span class="profile-value">{{ res.hasta | date: 'dd/MM/yyyy' }}</span>
+      </div>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-group">
+        <span class="profile-label">Huéspedes</span>
+        <span class="profile-value">{{ res.huespedes }}</span>
+      </div>
+      <div class="profile-group">
+        <span class="profile-label">Habitación</span>
+        <span class="profile-value">{{ res.id_habitacion }}</span>
+      </div>
+    </div>
+
+    <div class="profile-group">
+      <span class="profile-label">Servicios Adicionales</span>
+      <div class="services-list">
+        @for (service of res.adicionales; track service) {
+        <span class="service-tag">{{ service }}</span>
+        } @empty {
+        <span class="profile-value">Sin servicios adicionales</span>
+        }
+      </div>
+    </div>
+
+    <div class="profile-group">
+      <span class="profile-label">Observaciones</span>
+      <span class="profile-value">{{ res.observaciones || '—' }}</span>
+    </div>
+
+    <div class="reservation-actions">
+      <a routerLink="/user-dashboard" class="btn-res btn-back">Volver</a>
+      <button class="btn-res btn-cancel" type="button">Cancelar reserva</button>
+    </div>
+  </div>
+  } @empty {
+  <p class="state-message">No encontramos reservas con ese código.</p>
+  }
+  }
+</main>
