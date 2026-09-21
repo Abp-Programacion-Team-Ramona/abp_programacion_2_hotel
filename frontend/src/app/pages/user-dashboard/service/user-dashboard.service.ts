@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from './user-darshboard.model';
+import { User } from '../model/user-dashboard.model';
 
 const API_URL = 'http://localhost:3000';
 

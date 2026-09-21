@@ -13,13 +13,15 @@ export class Login {
 
   email: string = '';
   password: string = '';
+  errorMessage = '';
 
   constructor(
     private http: HttpClient,
     private router: Router
-  ) {}
+  ) { }
 
   iniciarSesion() {
+    this.errorMessage = '';
 
     this.http.get<any[]>('http://localhost:3000/users').subscribe({
 
@@ -31,25 +33,26 @@ export class Login {
 
         if (usuario) {
 
-          if (usuario.id_rol === 1 || usuario.id_rol === 2) {
+          localStorage.setItem('currentUser', JSON.stringify(usuario));
+
+          if (usuario.id_rol === "1" || usuario.id_rol === "2") {
             this.router.navigate(['/admin-dashboard']);
           }
 
-          if (usuario.id_rol === 3) {
+          if (usuario.id_rol === "3") {
             this.router.navigate(['/user-dashboard']);
           }
 
         } else {
 
-          alert('Correo o contraseña incorrectos');
-
+          this.errorMessage = 'Correo electrónico o contraseña incorrectos.';
         }
 
       },
 
       error: (error) => {
         console.error('Error al conectar con la base de datos:', error);
-        alert('No se pudo conectar con la base de datos');
+        this.errorMessage = 'No se pudo conectar con el servidor.';
       }
 
     });

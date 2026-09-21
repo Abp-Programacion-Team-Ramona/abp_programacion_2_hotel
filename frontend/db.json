@@ -1,64 +1,64 @@
 {
   "users": [
     {
-    "id": "1",
-    "id_rol": "2",
-    "nombre": "Ramona",
-    "apellido": "Remon",
-    "email": "ramona@email.com",
-    "password": "1234",
-    "num_contacto": "0303456"
-  }
-  ],
-"users": [
-  {
-    "id": "1",
-    "nombre": "Administrador",
-    "email": "admin@ramona.com",
-    "password": "1234",
-    "id_rol": 1
-  },
-  {
-    "id": "2",
-    "nombre": "Cliente",
-    "email": "cliente@ramona.com",
-    "password": "1234",
-    "id_rol": 3
-  }
-],
-  "rooms": [],
-  "reservations": [
-    {
-      "id_usuario": "1",
-      "id_habitacion": "101",
-      "desde": "2026-09-23",
-      "hasta": "2026-09-25",
-      "huespedes": 2,
-      "observaciones": "Necesito que alguien cuide a mis hijos hasta el mediodia, viajo por trabajo",
-      "estado": "pendiente",
-      "adicionales": ["Menú diario", "Cochera"],
-      "adicionales": [
-        "Menú diario",
-        "Cochera"
-      ],
-      "id": "fnMXTesqDNg"
+      "id": "1",
+      "id_rol": "1",
+      "nombre": "Administrador",
+      "apellido": "Ramona",
+      "email": "admin@ramona.com",
+      "password": "1234",
+      "num_contacto": "0303456"
     },
     {
-      "id_usuario": "1",
+      "nombre": "cande",
+      "apellido": "nico",
+      "num_contacto": "123456789",
+      "email": "diego@marco",
+      "password": "123456",
+      "id_rol": "3",
+      "id": "_7NS3iPyskI"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "101",
+      "numero": 101,
+      "tipo": "Simple",
+      "capacidad": 2,
+      "precio": 50000
+    },
+    {
+      "id": "102",
+      "numero": 102,
+      "tipo": "Familiar",
+      "capacidad": 4,
+      "precio": 80000
+    },
+    {
+      "id": "103",
+      "numero": 103,
+      "tipo": "Familiar",
+      "capacidad": 6,
+      "precio": 110000
+    }
+  ],
+  "reservations": [
+    {
+      "id_usuario": "_7NS3iPyskI",
       "id_habitacion": "101",
-      "desde": "2026-09-23",
-      "hasta": "2026-09-29",
-      "huespedes": 1,
-      "observaciones": "xd",
+      "desde": "2026-09-22",
+      "hasta": "2026-09-24",
+      "huespedes": 2,
+      "observaciones": "ultiam vuelta",
       "estado": "pendiente",
-      "adicionales": [],
-      "id": "F4bU5Z7O13Y"
+      "adicionales": [
+        "Cochera",
+        "Paseo histórico"
+      ],
+      "id": "YnHmB-fPQBw"
     }
   ],
   "payments": [],
-  "roles": []
-  
-}
   "roles": [
     {
       "id": "1",

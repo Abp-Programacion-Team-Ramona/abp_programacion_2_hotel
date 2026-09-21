@@ -1,9 +1,9 @@
 export interface User {
-  id?: number;
+  id?: string;
+  id_rol: string;
   nombre: string;
-  apellidos: string;
-  telefono: string;
+  apellido: string;
   email: string;
   password: string;
-  roleId?: number;
+  num_contacto: string;
 }

@@ -6,42 +6,27 @@
 
         <form (ngSubmit)="iniciarSesion()">
 
-            <input
-                type="email"
-                class="form-control mb-3"
-                placeholder="Correo electrónico"
-                [(ngModel)]="email"
-                name="email"
-                required
-            >
+            <input type="email" class="form-control mb-3" placeholder="Correo electrónico" [(ngModel)]="email"
+                name="email" required>
 
-            <input
-                type="password"
-                class="form-control mb-3"
-                placeholder="Contraseña"
-                [(ngModel)]="password"
-                name="password"
-                required
-            >
+            <input type="password" class="form-control mb-3" placeholder="Contraseña" [(ngModel)]="password"
+                name="password" required>
+            @if (errorMessage) {
+            <div class="login-error">
+                {{ errorMessage }}
+            </div>
+            }
 
             <div class="form-check">
-                <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="recordarme"
-                >
+                <input class="form-check-input" type="checkbox" id="recordarme">
 
                 <label class="form-check-label" for="recordarme">
                     Recordarme
                 </label>
             </div>
 
-            <button
-             type="button"
-             class="btn btn-light w-100"
-            (click)="iniciarSesion()"
-            >
-             Iniciar
+            <button type="submit" class="btn btn-light w-100">
+                Iniciar
             </button>
 
             <p class="registro-link">

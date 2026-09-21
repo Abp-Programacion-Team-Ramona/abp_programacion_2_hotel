@@ -72,6 +72,60 @@
     cursor: pointer;
 }
 
-p {
+.login-card p {
     text-align: center;
+}
+
+.login-card {
+    color: #e5e5e5;
+}
+
+.login-card h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-card p {
+    color: #bdbdbd;
+}
+
+.login-card a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-card a:hover {
+    color: #bdbdbd;
+    text-decoration: underline;
+}
+
+.login-card .form-control {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+.login-card .form-control::placeholder {
+    color: #999999;
+}
+
+.login-card .form-check-label {
+    color: #e5e5e5;
+}
+
+.registro-link {
+    margin-top: 20px;
+    color: #bdbdbd;
+}
+
+.login-error {
+    background-color: rgba(220, 53, 69, 0.15);
+    border: 1px solid #dc3545;
+    color: #ff8a95;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 0.9rem;
 }
