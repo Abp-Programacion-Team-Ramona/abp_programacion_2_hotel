@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReservationService } from './services/reservation.service';
 import { Reservation } from './models/reservation.model';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -11,7 +12,7 @@ import { Reservation } from './models/reservation.model';
 })
 export class ReservartionForm {
 
-  constructor(private reservationService: ReservationService) { }
+  constructor(private reservationService: ReservationService, private router: Router) { }
 
   minDate = new Date().toISOString().split('T')[0];
   successMessage = '';
@@ -38,6 +39,15 @@ export class ReservartionForm {
   });
 
   onSubmit() {
+
+    const storedUser = localStorage.getItem('currentUser');
+
+    if (!storedUser) {
+      alert('Debés iniciar sesión para realizar una reserva.');
+      return;
+    }
+
+    const currentUser = JSON.parse(storedUser);
 
     if (this.reservationForm.invalid) {
       this.reservationForm.markAllAsTouched();
@@ -79,23 +89,28 @@ export class ReservartionForm {
     }
 
     const reservation: Reservation = {
-      id_usuario: '1',
+      id_usuario: currentUser.id,
       id_habitacion: '101',
+
       desde: this.reservationForm.value.startDate!,
       hasta: this.reservationForm.value.endDate!,
       huespedes: Number(this.reservationForm.value.guests),
+
       observaciones: this.reservationForm.value.observations ?? '',
       estado: 'pendiente',
-      adicionales: adicionales
+      adicionales
     };
 
     this.reservationService.createReservation(reservation)
       .subscribe({
         next: response => {
-          console.log('Reserva creada:', response);
 
-          this.successMessage = 'La reserva se realizó correctamente.';
+          this.successMessage = 'La reserva se realizó correctamente. Redirigiendo al panel...';
           this.errorMessage = '';
+
+          setTimeout(() => {
+            this.router.navigate(['/user-dashboard']);
+          }, 1500);
 
           this.reservationForm.reset({
             dailyMenu: false,

@@ -13,6 +13,7 @@ import { User } from './models/user.model';
 export class RegisterComponent {
   registerForm: FormGroup;
   successMessage = signal('');
+  isLoading = signal(false);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,31 +24,44 @@ export class RegisterComponent {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       phone: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   onSubmit(event: Event): void {
-    event.preventDefault();
-
     if (this.registerForm.valid) {
-      const userData = {
-        ...this.registerForm.value,
+
+      this.isLoading.set(true);
+
+      const userData: User = {
+        nombre: this.registerForm.value.firstName,
+        apellido: this.registerForm.value.lastName,
+        num_contacto: this.registerForm.value.phone,
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password,
         id_rol: '3'
       };
 
-      this.userService.createUser(userData as User).subscribe({
+      this.userService.createUser(userData).subscribe({
         next: (data) => {
-          if (data) {
-            this.successMessage.set('¡Usuario creado correctamente!');
-            setTimeout(() => this.router.navigate(['/login']), 2500);
-          }
+
+          this.isLoading.set(false);
+
+          this.successMessage.set(
+            '¡Usuario creado correctamente! Redirigiendo al inicio de sesión...'
+          );
+
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000);
         },
-        error: (err) => console.error('Error registering user:', err)
+
+        error: (err) => {
+          this.isLoading.set(false);
+          console.error('Error registering user:', err);
+        }
       });
-    } else {
-      this.registerForm.markAllAsTouched();
     }
   }
 }

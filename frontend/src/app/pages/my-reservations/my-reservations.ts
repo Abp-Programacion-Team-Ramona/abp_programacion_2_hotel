@@ -1,8 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Reservation } from './my-reservations.model';
-import { ReservationsService } from './my_reservations.service';
+import { Reservation } from './model/my-reservations.model';
+import { ReservationsService } from './service/my-reservations.service';
 
 @Component({
   selector: 'app-my-reservations',
@@ -11,6 +11,7 @@ import { ReservationsService } from './my_reservations.service';
   styleUrl: './my-reservations.css',
 })
 export class MyReservations {
+
   private reservationsService = inject(ReservationsService);
 
   private reservations = signal<Reservation[]>([]);
@@ -21,19 +22,36 @@ export class MyReservations {
 
   filtered = computed(() => {
     const term = this.filter().trim().toLowerCase();
-    return this.reservations().filter((r) => r.id.toLowerCase().includes(term));
+
+    return this.reservations().filter(
+      (r) => r.id.toLowerCase().includes(term)
+    );
   });
 
   constructor() {
-    this.reservationsService.getAll().subscribe({
+
+    const storedUser = localStorage.getItem('currentUser');
+
+    if (!storedUser) {
+      this.error.set('No hay un usuario con sesión iniciada.');
+      this.loading.set(false);
+      return;
+    }
+
+    const currentUser = JSON.parse(storedUser);
+
+    this.reservationsService.getAll(currentUser.id).subscribe({
       next: (data) => {
         this.reservations.set(data);
         this.loading.set(false);
       },
+
       error: () => {
-        this.error.set('No pudimos cargar las reservas. No se encuentra conección a la base de datos');
+        this.error.set(
+          'No pudimos cargar las reservas. No se encuentra conexión a la base de datos.'
+        );
         this.loading.set(false);
-      },
+      }
     });
   }
 
@@ -41,12 +59,3 @@ export class MyReservations {
     this.filter.set(code);
   }
 }
-import { Component } from '@angular/core';
-
-@Component({
-  imports: [],
-  selector: 'app-my-reservations',
-  styleUrl: './my-reservations.css',
-  templateUrl: './my-reservations.html',
-})
-export class MyReservations {}

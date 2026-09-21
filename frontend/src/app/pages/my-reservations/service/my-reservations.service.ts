@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Reservation } from './my-reservations.model';
+import { Reservation } from '../model/my-reservations.model';
 
 const API_URL = 'http://localhost:3000';
 
