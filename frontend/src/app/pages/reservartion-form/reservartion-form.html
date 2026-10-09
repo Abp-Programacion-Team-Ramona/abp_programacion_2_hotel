@@ -2,6 +2,48 @@
     <form class="reservation-form" [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
         <h1>Registrar Nueva Reserva</h1>
 
+        <section class="habitaciones-section">
+            <h2>Seleccioná una habitación</h2>
+            <p>Elegí la habitación que mejor se adapte a tu estadía.</p>
+
+            <div class="habitaciones-grid">
+                @for (habitacion of habitacionesDisponibles(); track habitacion.id) {
+
+                <button type="button" class="habitacion-card"
+                    [class.selected]="reservationForm.value.id_habitacion === habitacion.id"
+                    [attr.aria-pressed]="reservationForm.value.id_habitacion === habitacion.id"
+                    (click)="seleccionarHabitacion(habitacion)">
+
+                    <img [src]="'/assets/images/room_' +
+    (habitacion.numero === 101 ? '1' :
+     habitacion.numero === 201 ? '2' : '3') + '.png'" [alt]="'Habitación ' + habitacion.numero" />
+
+                    <div class="habitacion-info">
+                        <h3>Habitación {{ habitacion.numero }}</h3>
+
+                        <p>{{ habitacion.tipo }}</p>
+
+                        <p>Capacidad: {{ habitacion.capacidad }} huéspedes</p>
+
+                        <strong>
+                            ${{ habitacion.precio }} por noche
+                        </strong>
+                    </div>
+
+                </button>
+                }
+            </div>
+
+            @if (
+            reservationForm.controls.id_habitacion.invalid &&
+            reservationForm.controls.id_habitacion.touched
+            ) {
+            <p class="text-danger mt-2">
+                Debés seleccionar una habitación.
+            </p>
+            }
+        </section>
+
         <div class=" row g-3">
             <div class="col-12 col-md-4">
                 <label for="startDate">Desde</label>
@@ -56,7 +98,7 @@
 
                 <div class="col-12 col-md-6">
                     <label class="service-option">
-                        <input type="checkbox" formControlName="childCare">
+                        <input type="checkbox" formControlName="childcare">
                         <span>Cuidado de niños</span>
                     </label>
                 </div>
@@ -106,16 +148,14 @@
         <button type="submit" class="btn btn-light w-100 py-3">
             Confirmar reserva
         </button>
-        @if (successMessage) {
-        <p class="success-message">
-            {{ successMessage }}
-        </p>
+        @if (successMessage()) {
+        <div class="success-message">
+            {{ successMessage() }}
+        </div>
         }
 
-        @if (errorMessage) {
-        <p class="error-message">
-            {{ errorMessage }}
-        </p>
+        @if (errorMessage()) {
+        <div class="error-message">{{ errorMessage() }}</div>
         }
     </form>
 </main>

@@ -1,1 +1,0 @@
-Profesora, le adjuntamos el codigo de mermaid por si la imagen no llega a verse correctamente.
