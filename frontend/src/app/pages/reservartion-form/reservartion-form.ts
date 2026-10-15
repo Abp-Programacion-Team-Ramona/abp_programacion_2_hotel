@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReservationService } from './services/reservation.service';
 import { Reservation } from './models/reservation.model';
 import { Router } from '@angular/router';
+import { AdicionalService } from './services/adicional.service';
+import { Adicional } from './models/adicional.model';
+import { Habitacion } from './models/habitacion.model';
+import { HabitacionService } from './services/habitacion.service';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -10,13 +14,20 @@ import { Router } from '@angular/router';
   styleUrl: './reservartion-form.css',
   templateUrl: './reservartion-form.html',
 })
-export class ReservartionForm {
+export class ReservartionForm implements OnInit {
 
-  constructor(private reservationService: ReservationService, private router: Router) { }
+  adicionalesDisponibles: Adicional[] = [];
+  habitacionesDisponibles = signal<Habitacion[]>([]);
+
+  constructor(
+    private reservationService: ReservationService,
+    private adicionalService: AdicionalService,
+    private habitacionService: HabitacionService,
+    private router: Router) { }
 
   minDate = new Date().toISOString().split('T')[0];
-  successMessage = '';
-  errorMessage = '';
+  successMessage = signal('');
+  errorMessage = signal('');
 
   reservationForm = new FormGroup({
     startDate: new FormControl('', Validators.required),
@@ -35,8 +46,65 @@ export class ReservartionForm {
     spaServices: new FormControl(false),
     clothingCleaning: new FormControl(false),
     gymPass: new FormControl(false),
-    observations: new FormControl('')
+    observations: new FormControl(''),
+    id_habitacion: new FormControl('', Validators.required),
   });
+
+  ngOnInit(): void {
+    this.habitacionService.getHabitaciones().subscribe({
+      next: (habitaciones) => {
+        this.habitacionesDisponibles.set(habitaciones);
+      },
+      error: (error) => {
+        console.error('Error cargando habitaciones:', error);
+        this.errorMessage.set('No se pudieron cargar las habitaciones.');
+      }
+    });
+    this.adicionalService.getAdicionales().subscribe({
+      next: (adicionales) => {
+        this.adicionalesDisponibles = adicionales;
+      },
+      error: (error) => {
+        console.error('Error cargando adicionales:', error);
+        this.errorMessage.set('No se pudieron cargar los servicios adicionales.');
+      }
+    });
+  }
+
+
+  seleccionarHabitacion(habitacion: Habitacion): void {
+    this.reservationForm.patchValue({
+      id_habitacion: habitacion.id
+    });
+
+    this.reservationForm.controls.id_habitacion.markAsTouched();
+
+  }
+
+  private obtenerAdicionalesSeleccionados(): string[] {
+
+    const controles: Record<string, string> = {
+      dailyMenu: 'Menú diario',
+      parking: 'Cochera',
+      childcare: 'Cuidado de niños',
+      historyGuide: 'Paseo histórico',
+      transfer: 'Traslado',
+      spaServices: 'Servicios de spa',
+      clothingCleaning: 'Lavandería',
+      gymPass: 'Acceso al gimnasio'
+    };
+
+    return Object.entries(controles)
+      .filter(([control]) =>
+        this.reservationForm.get(control)?.value === true
+      )
+      .map(([, nombre]) =>
+        this.adicionalesDisponibles.find(
+          adicional => adicional.nombre === nombre
+        )?.id
+      )
+      .filter((id): id is string => id !== undefined);
+  }
 
   onSubmit() {
 
@@ -54,46 +122,25 @@ export class ReservartionForm {
       return;
     }
 
-    const adicionales: string[] = [];
+    const desde = this.reservationForm.value.startDate!;
+    const hasta = this.reservationForm.value.endDate!;
 
-    if (this.reservationForm.value.dailyMenu) {
-      adicionales.push('Menú diario');
+    if (hasta <= desde) {
+      this.errorMessage.set('La fecha de salida debe ser posterior a la fecha de entrada.');
+      this.successMessage.set('');
+      return;
     }
 
-    if (this.reservationForm.value.parking) {
-      adicionales.push('Cochera');
-    }
-
-    if (this.reservationForm.value.childcare) {
-      adicionales.push('Cuidado de niños');
-    }
-
-    if (this.reservationForm.value.historyGuide) {
-      adicionales.push('Paseo histórico');
-    }
-
-    if (this.reservationForm.value.transfer) {
-      adicionales.push('Traslado');
-    }
-
-    if (this.reservationForm.value.spaServices) {
-      adicionales.push('Servicios de spa');
-    }
-
-    if (this.reservationForm.value.clothingCleaning) {
-      adicionales.push('Lavandería');
-    }
-
-    if (this.reservationForm.value.gymPass) {
-      adicionales.push('Acceso al gimnasio');
-    }
+    const adicionales = this.obtenerAdicionalesSeleccionados();
 
     const reservation: Reservation = {
-      id_usuario: currentUser.id,
-      id_habitacion: '101',
+      // id_usuario: '101',
+      // Para pruebas
+      id_usuario: 'dfb01126-6e4e-4d28-b0e0-d2b61c4271d3',
+      id_habitacion: this.reservationForm.value.id_habitacion!,
 
-      desde: this.reservationForm.value.startDate!,
-      hasta: this.reservationForm.value.endDate!,
+      desde: desde,
+      hasta: hasta,
       huespedes: Number(this.reservationForm.value.guests),
 
       observaciones: this.reservationForm.value.observations ?? '',
@@ -105,8 +152,8 @@ export class ReservartionForm {
       .subscribe({
         next: response => {
 
-          this.successMessage = 'La reserva se realizó correctamente. Redirigiendo al panel...';
-          this.errorMessage = '';
+          this.successMessage.set('La reserva se realizó correctamente. Redirigiendo al panel...');
+          this.errorMessage.set('')
 
           setTimeout(() => {
             this.router.navigate(['/user-dashboard']);
@@ -127,9 +174,22 @@ export class ReservartionForm {
         error: error => {
           console.error('Error creando reserva:', error);
 
-          this.errorMessage = 'No se pudo realizar la reserva.';
-          this.successMessage = '';
+          if (error.status === 400) {
+            const detalle = error.error;
+
+            this.errorMessage.set(
+              detalle?.id_habitacion ||
+              detalle?.non_field_errors?.[0] ||
+              detalle?.detail ||
+              'Los datos de la reserva no son válidos.'
+            );
+          } else {
+            this.errorMessage.set('Ocurrió un error al comunicarse con el servidor.');
+          }
+
+          this.successMessage.set('');
         }
       });
   }
 }
+
