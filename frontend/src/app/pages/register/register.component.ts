@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from './services/user.service';
@@ -12,8 +12,12 @@ import { User } from './models/user.model';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
-  successMessage = signal('');
-  isLoading = signal(false);
+
+  successMessage = signal<string>('');
+  errorMessage = signal<string>('');
+  isLoading = signal<boolean>(false);
+
+  isSubmitDisabled = computed(() => this.isLoading());
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,6 +46,8 @@ export class RegisterComponent {
 
   onSubmit(event: Event): void {
     event.preventDefault();
+    this.errorMessage.set('');
+    this.successMessage.set('');
 
     if (this.registerForm.valid) {
       this.isLoading.set(true);
@@ -51,18 +57,18 @@ export class RegisterComponent {
         apellido: this.registerForm.value.lastName,
         num_contacto: this.registerForm.value.phone,
         email: this.registerForm.value.email,
-        password: this.registerForm.value.password,
-        id_rol: '3'
+        password: this.registerForm.value.password
       };
 
       this.userService.createUser(userData).subscribe({
-        next: (data) => {
+        next: () => {
           this.isLoading.set(false);
           this.successMessage.set('¡Usuario creado correctamente!');
           this.router.navigate(['/login']);
         },
         error: (err) => {
           this.isLoading.set(false);
+          this.errorMessage.set('Ocurrió un error al registrar el usuario.');
           console.error('Error registering user:', err);
         }
       });
