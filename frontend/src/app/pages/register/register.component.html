@@ -3,7 +3,7 @@
     <h1 class="register-title">Crea tu cuenta</h1>
     <p class="register-subtitle">Registrate para realizar una reserva.</p>
 
-    <form [formGroup]="registerForm" (submit)="onSubmit($event)">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
 
       <div class="row g-2 mb-3">
         <div class="col-md-6">
@@ -57,11 +57,15 @@
         </div>
       </div>
 
+      @if (errorMessage()) {
+        <div class="error-banner">{{ errorMessage() }}</div>
+      }
+
       @if (successMessage()) {
         <div class="success-message">{{ successMessage() }}</div>
       }
 
-      <button type="submit" class="btn-submit" [disabled]="isLoading()">
+      <button type="submit" class="btn-submit" [disabled]="isSubmitDisabled()">
         @if (isLoading()) {
           Creando usuario...
         } @else {
