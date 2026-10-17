@@ -20,9 +20,20 @@ class ReservaRepository:
         reserva.adicionales.set(adicionales)
 
         return reserva
+    
+    @staticmethod
+    def obtener_por_usuario(id_usuario):
+        return (
+            Reserva.objects.filter(id_usuario=id_usuario)
+            .select_related("id_habitacion")
+            .prefetch_related("adicionales")
+            .order_by("-desde")
+        )
 
 
 class AdicionalRepository:
     @staticmethod
     def obtener_todos():
         return Adicional.objects.all().order_by("nombre")
+
+    

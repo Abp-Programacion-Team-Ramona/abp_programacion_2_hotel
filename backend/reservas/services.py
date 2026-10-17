@@ -31,6 +31,10 @@ class ReservaService:
 
         return ReservaRepository.crear(datos.copy())
 
+    @staticmethod
+    def obtener_por_usuario(id_usuario):
+        return ReservaRepository.obtener_por_usuario(id_usuario)
+
 
 class AdicionalService:
     @staticmethod
