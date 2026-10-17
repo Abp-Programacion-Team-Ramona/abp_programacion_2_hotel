@@ -8,6 +8,15 @@
       "email": "admin@ramona.com",
       "password": "1234",
       "num_contacto": "0303456"
+    },
+    {
+      "nombre": "Diego",
+      "apellido": "Santos",
+      "num_contacto": "3514234567",
+      "email": "diego@correo.com",
+      "password": "123456",
+      "id_rol": "3",
+      "id": "YlIQ6LhkNO4"
     }
   ],
   "rooms": [
@@ -33,7 +42,23 @@
       "precio": 110000
     }
   ],
-  "reservations": [],
+  "reservations": [
+    {
+      "id_usuario": "YlIQ6LhkNO4",
+      "id_habitacion": "101",
+      "desde": "2027-01-21",
+      "hasta": "2027-01-28",
+      "huespedes": 2,
+      "observaciones": "Quiero cochera para 2 autos",
+      "estado": "pendiente",
+      "adicionales": [
+        "Menú diario",
+        "Cochera",
+        "Traslado"
+      ],
+      "id": "cvET1Es1pyY"
+    }
+  ],
   "payments": [],
   "roles": [
     {

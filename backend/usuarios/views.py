@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
 
 from .models import Usuario
 from .serializers import UsuarioSerializer
@@ -20,3 +21,9 @@ class UsuarioAPIView(APIView):
 
         print("Errores de validacion:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UsuarioDetailAPIView(APIView):
+    def get(self, request, pk):
+        usuario = get_object_or_404(Usuario, pk=pk)
+        serializer = UsuarioSerializer(usuario)
+        return Response(serializer.data, status=status.HTTP_200_OK)    

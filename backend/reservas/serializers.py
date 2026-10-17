@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from .models import Adicional, Reserva
 
 
@@ -41,3 +40,27 @@ class AdicionalSerializer(serializers.ModelSerializer):
             "nombre",
             "precio",
         ]
+        
+class ReservaDetalleSerializer(serializers.ModelSerializer):
+    numero_habitacion = serializers.IntegerField(
+        source="id_habitacion.numero", read_only=True
+    )
+    adicionales = serializers.SlugRelatedField(
+        many=True, read_only=True, slug_field="nombre"
+    )
+
+    class Meta:
+        model = Reserva
+        fields = [
+            "id",
+            "id_usuario",
+            "id_habitacion",
+            "numero_habitacion",
+            "desde",
+            "hasta",
+            "huespedes",
+            "observaciones",
+            "estado",
+            "adicionales",
+        ]
+        read_only_fields = fields
