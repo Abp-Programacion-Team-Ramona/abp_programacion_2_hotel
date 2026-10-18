@@ -1,7 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ADMIN_ROLE_ID } from '../../../constants/roles';
+import { UserService } from '../register/services/user.service';
+
+interface Usuario {
+  id: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  num_contacto: string;
+  id_rol: string;
+}
 
 @Component({
   imports: [FormsModule],
@@ -17,46 +28,44 @@ export class Login {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private userService: UserService
   ) { }
 
   iniciarSesion() {
     this.errorMessage = '';
 
-    this.http.get<any[]>('http://localhost:3000/users').subscribe({
+    this.http.post<Usuario>(
+      'http://127.0.0.1:8000/api/v1/login/',
+      {
+        email: this.email,
+        password: this.password
+      }
+    ).subscribe({
 
-      next: (usuarios) => {
+      next: (usuario) => {
+        this.userService.setCurrentUser(usuario);
 
-        const usuario = usuarios.find(
-          (u) => u.email === this.email && u.password === this.password
-        );
+        const destino = usuario.id_rol === ADMIN_ROLE_ID
+          ? '/admin-dashboard'
+          : '/user-dashboard';
 
-        if (usuario) {
-
-          localStorage.setItem('currentUser', JSON.stringify(usuario));
-
-          if (usuario.id_rol === "1" || usuario.id_rol === "2") {
-            this.router.navigate(['/admin-dashboard']);
-          }
-
-          if (usuario.id_rol === "3") {
-            this.router.navigate(['/user-dashboard']);
-          }
-
-        } else {
-
-          this.errorMessage = 'Correo electrónico o contraseña incorrectos.';
-        }
-
+        this.router.navigate([destino]);
       },
 
       error: (error) => {
-        console.error('Error al conectar con la base de datos:', error);
-        this.errorMessage = 'No se pudo conectar con el servidor.';
+        console.error('Error al iniciar sesión:', error);
+
+        if (error.status === 401) {
+          this.errorMessage = 'Correo electrónico o contraseña incorrectos.';
+        } else {
+          this.errorMessage = 'No se pudo conectar con el servidor.';
+        }
+
+        this.cdr.detectChanges();
       }
 
     });
-
   }
-
 }

@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Reservation } from './model/my-reservations.model';
 import { ReservationsService } from './service/my-reservations.service';
 
@@ -17,15 +17,31 @@ export class MyReservations {
   private reservations = signal<Reservation[]>([]);
   private filter = signal('');
 
+  private route = inject(ActivatedRoute);
+
+  cancelando = signal<string | null>(null);
+
+  reservaDestacada = this.route.snapshot.queryParamMap.get('reserva');
+
   loading = signal(true);
   error = signal<string | null>(null);
 
   filtered = computed(() => {
     const term = this.filter().trim().toLowerCase();
 
-    return this.reservations().filter(
-      (r) => r.id.toLowerCase().includes(term)
+    const reservas = this.reservations().filter(
+      r => r.id.toLowerCase().includes(term)
     );
+
+    if (!this.reservaDestacada) {
+      return reservas;
+    }
+
+    return [...reservas].sort((a, b) => {
+      if (a.id === this.reservaDestacada) return -1;
+      if (b.id === this.reservaDestacada) return 1;
+      return 0;
+    });
   });
 
   constructor() {
@@ -57,5 +73,43 @@ export class MyReservations {
 
   search(code: string): void {
     this.filter.set(code);
+  }
+
+  cancelarReserva(reserva: Reservation): void {
+    if (reserva.estado.toLowerCase() === 'cancelada') {
+      return;
+    }
+
+    const confirmar = confirm(
+      `¿Querés cancelar la reserva ${reserva.id}?`
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
+    this.cancelando.set(reserva.id);
+    this.error.set(null);
+
+    this.reservationsService.actualizarEstado(
+      reserva.id,
+      'cancelada'
+    ).subscribe({
+      next: (reservaActualizada) => {
+        this.reservations.update(reservas =>
+          reservas.map(actual =>
+            actual.id === reservaActualizada.id
+              ? reservaActualizada
+              : actual
+          )
+        );
+
+        this.cancelando.set(null);
+      },
+      error: () => {
+        this.error.set('No se pudo cancelar la reserva.');
+        this.cancelando.set(null);
+      }
+    });
   }
 }
