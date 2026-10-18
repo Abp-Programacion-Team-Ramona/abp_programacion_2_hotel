@@ -14,6 +14,7 @@ export class Login {
   email: string = '';
   password: string = '';
   errorMessage = '';
+  cargando = false;
 
   constructor(
     private http: HttpClient,
@@ -22,37 +23,38 @@ export class Login {
 
   iniciarSesion() {
     this.errorMessage = '';
+    this.cargando = true;
 
-    this.http.get<any[]>('http://localhost:3000/users').subscribe({
+    this.http.post<any>('http://127.0.0.1:8000/api/v1/login/', {
+      email: this.email,
+      password: this.password
+    }).subscribe({
 
-      next: (usuarios) => {
+      next: (usuario) => {
+        this.cargando = false;
 
-        const usuario = usuarios.find(
-          (u) => u.email === this.email && u.password === this.password
-        );
+        localStorage.setItem('currentUser', JSON.stringify(usuario));
 
-        if (usuario) {
-
-          localStorage.setItem('currentUser', JSON.stringify(usuario));
-
-          if (usuario.id_rol === "1" || usuario.id_rol === "2") {
-            this.router.navigate(['/admin-dashboard']);
-          }
-
-          if (usuario.id_rol === "3") {
-            this.router.navigate(['/user-dashboard']);
-          }
-
+        if (usuario.rol === 'Administrador' || usuario.rol === 'Empleado') {
+          this.router.navigate(['/admin-dashboard']);
+        } else if (usuario.rol === 'Cliente') {
+          this.router.navigate(['/user-dashboard']);
         } else {
-
-          this.errorMessage = 'Correo electrónico o contraseña incorrectos.';
+          this.errorMessage = 'Rol de usuario no reconocido.';
         }
-
       },
 
       error: (error) => {
-        console.error('Error al conectar con la base de datos:', error);
-        this.errorMessage = 'No se pudo conectar con el servidor.';
+        this.cargando = false;
+
+        if (error.status === 401) {
+          this.errorMessage = 'Correo electrónico o contraseña incorrectos.';
+        } else if (error.status === 400) {
+          this.errorMessage = 'Ingresá tu correo y tu contraseña.';
+        } else {
+          console.error('Error al conectar con el servidor:', error);
+          this.errorMessage = 'No se pudo conectar con el servidor.';
+        }
       }
 
     });

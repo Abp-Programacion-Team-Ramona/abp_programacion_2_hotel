@@ -7,4 +7,5 @@ urlpatterns = [
     path("api/v1/reservas/", include("reservas.urls")),
     path("api/v1/adicionales/", AdicionalAPIView.as_view(), name="listar-adicionales"),
     path("api/v1/habitaciones/", include("habitaciones.urls")),
+    path("api/v1/login/", include("usuarios.urls")),
 ]

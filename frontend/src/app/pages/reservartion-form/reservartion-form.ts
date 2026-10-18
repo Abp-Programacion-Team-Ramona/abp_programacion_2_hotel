@@ -136,7 +136,7 @@ export class ReservartionForm implements OnInit {
     const reservation: Reservation = {
       // id_usuario: '101',
       // Para pruebas
-      id_usuario: 'dfb01126-6e4e-4d28-b0e0-d2b61c4271d3',
+      id_usuario: currentUser.id,
       id_habitacion: this.reservationForm.value.id_habitacion!,
 
       desde: desde,
