@@ -192,3 +192,22 @@
         flex-direction: column;
     }
 }
+
+.cancel-reservation-btn {
+    background: transparent;
+    color: #f87171;
+    border: 1px solid #f87171;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font: inherit;
+}
+
+.cancel-reservation-btn:hover:not(:disabled) {
+    background: rgba(248, 113, 113, 0.1);
+}
+
+.cancel-reservation-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

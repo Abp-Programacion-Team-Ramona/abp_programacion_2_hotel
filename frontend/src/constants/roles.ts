@@ -1,0 +1,1 @@
+export const ADMIN_ROLE_ID = '75ce9286-3fb4-4593-bfb3-4e59f2579235';

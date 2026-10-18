@@ -10,7 +10,24 @@ export class ReservationsService {
 
   getAll(userId?: string): Observable<Reservation[]> {
     let params = new HttpParams();
-    if (userId) params = params.set('id_usuario', userId);
-    return this.http.get<Reservation[]>(`${environment.apiUrl}/reservas/`, { params });
+
+    if (userId) {
+      params = params.set('id_usuario', userId);
+    }
+
+    return this.http.get<Reservation[]>(
+      `${environment.apiUrl}/reservas/`,
+      { params }
+    );
+  }
+
+  actualizarEstado(
+    reservaId: string,
+    estado: 'confirmada' | 'cancelada'
+  ): Observable<Reservation> {
+    return this.http.patch<Reservation>(
+      `${environment.apiUrl}/reservas/${reservaId}/`,
+      { estado }
+    );
   }
 }

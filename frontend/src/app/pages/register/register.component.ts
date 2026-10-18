@@ -68,7 +68,19 @@ export class RegisterComponent {
         },
         error: (err) => {
           this.isLoading.set(false);
-          this.errorMessage.set('Ocurrió un error al registrar el usuario.');
+
+          if (err.status === 400 && err.error?.email) {
+            const mensaje = err.error.email;
+
+            this.errorMessage.set(
+              Array.isArray(mensaje) ? mensaje[0] : mensaje
+            );
+          } else {
+            this.errorMessage.set(
+              'Ocurrió un error al registrar el usuario.'
+            );
+          }
+
           console.error('Error registering user:', err);
         }
       });

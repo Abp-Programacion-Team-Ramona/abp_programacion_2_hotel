@@ -44,39 +44,92 @@
             }
         </section>
 
-        <div class=" row g-3">
-            <div class="col-12 col-md-4">
-                <label for="startDate">Desde</label>
-                <input type="date" id="startDate" class="form-control" formControlName="startDate" [min]="minDate">
-                @if (
-                reservationForm.controls.startDate.invalid &&
-                reservationForm.controls.startDate.touched
-                ) {
-                <small class="error-message">La fecha de inicio es obligatoria.</small>
-                }
+        <section class="form-section calendario-section">
+            <h2>Seleccioná las fechas de tu estadía</h2>
+
+            @if (!reservationForm.controls.id_habitacion.value) {
+            <p class="calendario-ayuda">Primero seleccioná una habitación.</p>
+            } @else if (cargandoDisponibilidad()) {
+            <p class="calendario-ayuda">Consultando disponibilidad...</p>
+            } @else {
+            <div class="calendario">
+                <div class="calendario-header">
+                    <button type="button" (click)="cambiarMes(-1)" aria-label="Mes anterior">
+                        ‹
+                    </button>
+
+                    <h3>{{ nombreMeses[mesActual] }} {{ anioActual }}</h3>
+
+                    <button type="button" (click)="cambiarMes(1)" aria-label="Mes siguiente">
+                        ›
+                    </button>
+                </div>
+
+                <div class="calendario-grid">
+                    @for (nombre of diasSemana; track nombre) {
+                    <span class="calendario-dia-semana">{{ nombre }}</span>
+                    }
+
+                    @for (dia of obtenerDiasDelMes(); track $index) {
+                    @if (dia === null) {
+                    <span></span>
+                    } @else {
+                    <button type="button" class="calendario-dia"
+                        [class.ocupado]="estaDeshabilitada(dia) && estaOcupada(dia)"
+                        [class.pasado]=" esFechaPasada(dia)" [class.en-rango]="estaEnRango(dia)"
+                        [class.seleccionado]="esFechaSeleccionada(dia)" [disabled]="estaDeshabilitada(dia)"
+                        (click)="seleccionarFecha(dia)">
+                        {{ dia }}
+                    </button>
+                    }
+                    }
+                </div>
+
+                <div class="calendario-leyenda">
+                    <span><i class="leyenda-disponible"></i> Disponible</span>
+                    <span><i class="leyenda-ocupado"></i> Ocupado</span>
+                    <span><i class="leyenda-seleccionado"></i> Seleccionado</span>
+                </div>
             </div>
-            <div class="col-12 col-md-4">
-                <label for="endDate">Hasta</label>
-                <input type="date" id="endDate" class="form-control" formControlName="endDate"
-                    [min]="reservationForm.controls.startDate.value || minDate">
-                @if (
-                reservationForm.controls.endDate.invalid &&
-                reservationForm.controls.endDate.touched
-                ) {
-                <small class="error-message">La fecha de fin es obligatoria.</small>
-                }
+
+            <p class="calendario-ayuda">
+                Seleccioná primero la entrada y después la salida.
+            </p>
+            }
+
+            <div class="fechas-seleccionadas">
+                <div>
+                    <label>Entrada</label>
+                    <span>{{ reservationForm.controls.startDate.value || 'Sin seleccionar' }}</span>
+                </div>
+                <div>
+                    <label>Salida</label>
+                    <span>{{ reservationForm.controls.endDate.value || 'Sin seleccionar' }}</span>
+                </div>
             </div>
-            <div class="col-12 col-md-4">
+
+            <div>
                 <label for="guests">Huéspedes</label>
                 <input type="number" id="guests" class="form-control" formControlName="guests" min="1" max="6">
-                @if (
-                reservationForm.controls.guests.invalid &&
-                reservationForm.controls.guests.touched
-                ) {
-                <small class="error-message">El minimo de huespedes es 1 y el maximo 6.</small>
+
+                @if (reservationForm.controls.guests.touched) {
+                @if (reservationForm.controls.guests.hasError('required')) {
+                <small class="error-message">
+                    Ingresá la cantidad de huéspedes.
+                </small>
+                } @else if (reservationForm.controls.guests.hasError('min')) {
+                <small class="error-message">
+                    Debe haber al menos un huésped.
+                </small>
+                } @else if (reservationForm.controls.guests.hasError('max')) {
+                <small class="error-message">
+                    La habitación seleccionada admite un máximo de
+                    {{ obtenerCapacidadHabitacion() }} huéspedes.
+                </small>
+                }
                 }
             </div>
-        </div>
+        </section>
 
         <div class="form-section">
             <h2>Servicios adicionales</h2>

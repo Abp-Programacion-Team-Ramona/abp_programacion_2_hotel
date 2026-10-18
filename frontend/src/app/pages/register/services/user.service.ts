@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -11,16 +11,11 @@ export class UserService {
 
   currentUser = signal<User | null>(this.getUserFromStorage());
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.url, user).pipe(
-      tap((newUser) => {
-        this.setCurrentUser(newUser);
-      })
-    );
+    return this.http.post<User>(this.url, user);
   }
-
   setCurrentUser(user: User): void {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.currentUser.set(user);
