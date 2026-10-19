@@ -8,6 +8,8 @@
     color: red;
     text-align: center;
     font-weight: 500;
+    font-size: 0.875rem;
+    margin-top: 5px;
 }
 
 .reservation-form h1 {
@@ -53,12 +55,6 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-}
-
-.error-message {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 5px;
 }
 
 .form-control.ng-invalid.ng-touched {
@@ -179,4 +175,272 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+}
+
+.habitaciones-section {
+    background-color: #202020;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #2a2a2a;
+}
+
+.habitaciones-section>p {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+.habitaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+
+.reservation-form .habitacion-card {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+    overflow: hidden;
+
+    background-color: #252525;
+    border: 2px solid #333;
+    border-radius: 14px;
+
+    text-align: left;
+    cursor: pointer;
+
+    transition: transform 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.reservation-form .habitacion-card:hover {
+    transform: translateY(-4px);
+    border-color: #777;
+    background-color: #2d2d2d;
+}
+
+
+.reservation-form .habitacion-card.selected {
+    border-color: #4caf50;
+    background-color: #263329;
+    box-shadow: 0 0 0 1px #4caf50;
+}
+
+
+.habitacion-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+
+.habitacion-info {
+    padding: 16px;
+    width: 100%;
+}
+
+.habitacion-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.habitacion-info p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #bbb;
+    margin-bottom: 8px;
+}
+
+.habitacion-info strong {
+    display: block;
+    margin-top: 14px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.reservation-form .habitacion-card:focus-visible {
+    outline: 2px solid #4caf50;
+    outline-offset: 3px;
+}
+
+/* Tablets */
+@media (max-width: 850px) {
+    .habitaciones-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Celulares */
+@media (max-width: 576px) {
+    .habitaciones-section {
+        padding: 18px;
+    }
+
+    .habitaciones-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .habitacion-card img {
+        height: 200px;
+    }
+}
+
+.calendario-section {
+    align-items: stretch;
+}
+
+.calendario {
+    background: #232323;
+    border: 1px solid #333;
+    border-radius: 14px;
+    padding: 20px;
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.calendario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendario-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.reservation-form .calendario-header button {
+    width: 40px;
+    padding: 8px;
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
+}
+
+.calendario-dia-semana {
+    text-align: center;
+    color: #aaa;
+    padding: 10px 0;
+    font-size: 0.85rem;
+}
+
+.reservation-form .calendario-dia {
+    padding: 10px 0;
+    min-width: 0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: #303030;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.reservation-form .calendario-dia:hover:not(:disabled) {
+    background: #414141;
+    border-color: #777;
+}
+
+.reservation-form .calendario-dia.ocupado,
+.reservation-form .calendario-dia.pasado {
+    background: #242424;
+    color: #777;
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
+
+.reservation-form .calendario-dia.en-rango {
+    background: #354b39;
+    color: #fff;
+}
+
+.reservation-form .calendario-dia.seleccionado {
+    background: #4caf50;
+    color: #101810;
+    font-weight: 700;
+}
+
+.calendario-leyenda {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+.calendario-leyenda span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.calendario-leyenda i {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.leyenda-disponible {
+    background: #303030;
+}
+
+.leyenda-ocupado {
+    background: #777;
+}
+
+.leyenda-seleccionado {
+    background: #4caf50;
+}
+
+.calendario-ayuda {
+    text-align: center;
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+.fechas-seleccionadas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.fechas-seleccionadas>div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fechas-seleccionadas span {
+    padding: 14px;
+    background: #232323;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #fff;
+}
+
+@media (max-width: 576px) {
+    .calendario {
+        padding: 10px;
+    }
+
+    .reservation-form .calendario-dia {
+        padding: 9px 0;
+        font-size: 0.8rem;
+    }
 }

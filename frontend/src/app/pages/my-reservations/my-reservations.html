@@ -50,7 +50,7 @@
       </div>
       <div class="profile-group">
         <span class="profile-label">Habitación</span>
-        <span class="profile-value">{{ res.id_habitacion }}</span>
+        <span class="profile-value">{{ res.numero_habitacion }}</span>
       </div>
     </div>
 
@@ -70,13 +70,25 @@
       <span class="profile-value">{{ res.observaciones || '—' }}</span>
     </div>
 
-    <div class="reservation-actions">
-      <a routerLink="/user-dashboard" class="btn-res btn-back">Volver</a>
-      <button class="btn-res btn-cancel" type="button">Cancelar reserva</button>
+    @if (res.estado.toLowerCase() !== 'cancelada') {
+    <div class="reservation-actions mt-4">
+      <button type="button" class="cancel-reservation-btn" [disabled]="cancelando() === res.id"
+        (click)="cancelarReserva(res)">
+        {{ cancelando() === res.id ? 'Cancelando...' : 'Cancelar reserva' }}
+      </button>
     </div>
+    }
+
   </div>
   } @empty {
-  <p class="state-message">No encontramos reservas con ese código.</p>
+  <p class="state-message">
+    No tenés reservas registradas o ninguna coincide con tu búsqueda.
+  </p>
   }
+
+  <div class="reservation-actions mt-4">
+    <a routerLink="/user-dashboard" class="btn-res btn-back">
+      Volver al panel
+    </a>
+  </div>
   }
-</main>

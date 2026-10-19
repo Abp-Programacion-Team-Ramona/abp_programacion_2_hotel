@@ -1,12 +1,18 @@
+
 erDiagram
     ROLES ||--o{ USUARIOS : asignado
     USUARIOS ||--o{ RESERVAS : realiza
     HABITACIONES ||--o{ RESERVAS : recibe
     RESERVAS ||--o| PAGOS : tiene
+    RESERVAS }o--o{ ADICIONALES : incluye
+
+    ROLES {
+        uuid id
+        string descripcion
+    }
 
     USUARIOS {
-        uuid id PK
-        uuid id_rol FK
+        uuid id
         string nombre
         string apellido
         string email
@@ -14,13 +20,8 @@ erDiagram
         string num_contacto
     }
 
-    ROLES {
-        uuid id PK
-        string descripcion
-    }
-
     HABITACIONES {
-        uuid id PK
+        uuid id
         int numero
         string tipo
         int capacidad
@@ -28,20 +29,22 @@ erDiagram
     }
 
     RESERVAS {
-        uuid id PK
-        uuid id_usuario FK
-        uuid id_habitacion FK
+        uuid id
         string observaciones
         string estado
-        string adicionales
         date desde
         date hasta
         int huespedes
     }
 
+    ADICIONALES {
+        uuid id
+        string nombre
+        decimal precio
+    }
+
     PAGOS {
-        uuid id PK
-        uuid id_reserva FK
+        uuid id
         string medio
         string estado
         decimal monto

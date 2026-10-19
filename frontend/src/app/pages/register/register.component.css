@@ -2,136 +2,154 @@
   display: block;
   min-height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                    url('../../../../public/assets/images/register_background.jpg');
+                    url('../../../../public/assets/images/hotel.jpg');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 
-main {
+main.register-container {
+  min-height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 16px;
 }
- 
+
 .register-card {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  padding: 32px 28px;
   width: 100%;
-  max-width: 480px;
+  max-width: 520px;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  color: #e5e5e5;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
- 
+
 .register-title {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 6px;
-  color: #1c1e21;
+  color: #ffffff;
+  text-align: center;
 }
- 
+
 .register-subtitle {
   font-size: 14px;
-  color: #606770;
+  color: #bdbdbd;
   margin-bottom: 24px;
   line-height: 1.4;
   text-align: center;
 }
- 
 
- 
 .label {
   display: block;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 600;
   margin-bottom: 6px;
-  color: #1c1e21;
+  color: #ffffff;
 }
- 
-.row {
-  display: flex;
-  gap: 10px;
-}
- 
-.row input {
-  flex: 1;
-}
- 
-input[type="text"],
-input[type="email"],
-input[type= "date"],
-input[type="password"],
-input[type="tel"],
-select {
+
+.form-control {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccd0d5;
-  border-radius: 6px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background-color: rgba(42, 42, 42, 0.8);
+  color: #ffffff;
   font-size: 15px;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  color: #1c1e21;
 }
- 
- 
+
+.form-control::placeholder {
+  color: #7a7a7a;
+}
+
+.form-control:focus {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
 .btn-submit {
   display: block;
-  text-align: center;
-  text-decoration: none;
   width: 100%;
-  padding: 12px;
-  background-color: #000000;
-  color: white;
+  padding: 15px;
+  background-color: #ffffff;
+  color: #121212 !important;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
-  font-family: Arial, sans-serif;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 8px;
-  margin-bottom: 10px;
-}
-
-.btn-submit:hover {
-  background-color: #333333;
-}
-
-.btn-login {
-  display: block;
+  margin-top: 24px;
+  margin-bottom: 15px;
+  transition: all 0.2s ease-in-out;
   text-align: center;
-  text-decoration: none;
-  width: 100%;
-  padding: 12px;
-  background-color: white;
-  color: #000000;
-  border: 1px solid #ccd0d5;
-  border-radius: 6px;
-  font-size: 15px;
-  font-family: Arial, sans-serif;
-  cursor: pointer;
+  height: auto;
 }
 
-.btn-login:hover {
-  background-color: #f0f2f5;
+.btn-submit:hover:not([disabled]) {
+  background-color: #e5e5e5;
+  transform: translateY(-1px);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #cccccc;
 }
 
 input.ng-invalid.ng-touched {
-  border: 1px solid #dc3545 !important;
+  border: 1px solid #ff4d5a !important;
 }
 
 .error-message {
-  color: #dc3545;
+  color: #ff8a95;
   font-size: 0.85rem;
   margin-top: 4px;
+  display: block;
+}
+
+.error-banner {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #ff8a95;
+  border: 1px solid #dc3545;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
 }
 
 .success-message {
   margin-top: 12px;
   padding: 10px 14px;
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-  border-radius: 6px;
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #85ed9d;
+  border: 1px solid #28a745;
+  border-radius: 8px;
   font-weight: 500;
   text-align: center;
+}
+
+.login-link {
+  margin-top: 20px;
+  text-align: center;
+  color: #bdbdbd;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  color: #bdbdbd;
+  text-decoration: underline;
 }

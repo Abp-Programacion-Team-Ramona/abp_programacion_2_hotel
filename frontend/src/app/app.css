@@ -7,3 +7,16 @@
 footer {
     margin-top: auto;
 }
+
+.main-navbar .navbar-logout {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.main-navbar .navbar-logout:hover {
+    color: #4caf50;
+}
