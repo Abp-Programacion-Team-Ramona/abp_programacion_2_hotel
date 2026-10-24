@@ -109,9 +109,11 @@ export class AdminDashboard implements OnInit {
   buscarReserva(valor: string): void {
     this.busqueda = valor.trim().toLowerCase();
 
+    const busquedaSinGuiones = this.busqueda.replace(/-/g, '');
+
     this.reservasFiltradas.set(
       this.reservas().filter(reserva =>
-        reserva.id.toLowerCase().includes(this.busqueda) ||
+        reserva.id.toLowerCase().replace(/-/g, '').includes(busquedaSinGuiones) ||
         reserva.numero_habitacion.toString().includes(this.busqueda) ||
         reserva.estado.toLowerCase().includes(this.busqueda)
       )
