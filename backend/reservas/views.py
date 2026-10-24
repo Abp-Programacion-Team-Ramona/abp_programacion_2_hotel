@@ -46,24 +46,32 @@ class ReservaAPIView(APIView):
 
 class DisponibilidadAPIView(APIView):
     def get(self, request):
-        id_usuario = request.query_params.get("id_usuario")
+        id_habitacion = request.query_params.get("id_habitacion")
 
-        if id_usuario:
-            try:
-                uuid.UUID(id_usuario)
-            except (ValueError, TypeError):
-                return Response(
-                    {"id_usuario": "El identificador no es válido."},
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
+        if not id_habitacion:
+            return Response(
+                {"id_habitacion": "El identificador de la habitación es obligatorio."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
-            reservas = ReservaService.obtener_por_usuario(id_usuario)
-        else:
-            reservas = Reserva.objects.all().order_by("-desde")
+        try:
+            uuid.UUID(id_habitacion)
+        except (ValueError, TypeError):
+            return Response(
+                {"id_habitacion": "El identificador no es válido."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
-        serializer = ReservaDetalleSerializer(reservas, many=True)
+        reservas = (
+            Reserva.objects.filter(id_habitacion_id=id_habitacion)
+            .exclude(estado="cancelada")
+            .values("desde", "hasta")
+        )
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(
+            {"fechas_ocupadas": list(reservas)},
+            status=status.HTTP_200_OK,
+        )
 
 
 class AdicionalAPIView(APIView):
