@@ -10,7 +10,7 @@
           <label class="label">Nombre</label>
           <input type="text" class="form-control" placeholder="Nombre" formControlName="firstName">
           @if (registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched) {
-            <span class="error-message">El nombre es obligatorio.</span>
+          <span class="error-message">El nombre es obligatorio.</span>
           }
         </div>
 
@@ -18,16 +18,30 @@
           <label class="label">Apellidos</label>
           <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName">
           @if (registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched) {
-            <span class="error-message">El apellido es obligatorio.</span>
+          <span class="error-message">El apellido es obligatorio.</span>
           }
         </div>
       </div>
 
       <div class="mb-3">
         <label class="label">Número de teléfono</label>
+
         <input type="tel" class="form-control" placeholder="3511234567" formControlName="phone">
-        @if (registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched) {
-          <span class="error-message">El teléfono es obligatorio.</span>
+
+        @if (registerForm.get('phone')?.touched) {
+
+        @if (registerForm.get('phone')?.hasError('required')) {
+        <span class="error-message">
+          El teléfono es obligatorio.
+        </span>
+        }
+
+        @if (registerForm.get('phone')?.hasError('pattern')) {
+        <span class="error-message">
+          Ingresá un teléfono válido (entre 7 y 15 dígitos).
+        </span>
+        }
+
         }
       </div>
 
@@ -35,7 +49,7 @@
         <label class="label">Correo electrónico</label>
         <input type="email" class="form-control" placeholder="correo@dominio.com" formControlName="email">
         @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
-          <span class="error-message">Formato de correo inválido.</span>
+        <span class="error-message">Formato de correo inválido.</span>
         }
       </div>
 
@@ -44,7 +58,7 @@
           <label class="label">Contraseña</label>
           <input type="password" class="form-control" placeholder="******" formControlName="password">
           @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
-            <span class="error-message">Mínimo 6 caracteres.</span>
+          <span class="error-message">Mínimo 6 caracteres.</span>
           }
         </div>
 
@@ -52,24 +66,24 @@
           <label class="label">Confirmar Contraseña</label>
           <input type="password" class="form-control" placeholder="******" formControlName="confirmPassword">
           @if (registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched) {
-            <span class="error-message">Las contraseñas no coinciden.</span>
+          <span class="error-message">Las contraseñas no coinciden.</span>
           }
         </div>
       </div>
 
       @if (errorMessage()) {
-        <div class="error-banner">{{ errorMessage() }}</div>
+      <div class="error-banner">{{ errorMessage() }}</div>
       }
 
       @if (successMessage()) {
-        <div class="success-message">{{ successMessage() }}</div>
+      <div class="success-message">{{ successMessage() }}</div>
       }
 
       <button type="submit" class="btn-submit" [disabled]="isSubmitDisabled()">
         @if (isLoading()) {
-          Creando usuario...
+        Creando usuario...
         } @else {
-          Registrarse
+        Registrarse
         }
       </button>
 

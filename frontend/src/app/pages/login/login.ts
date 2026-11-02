@@ -36,10 +36,22 @@ export class Login {
   iniciarSesion() {
     this.errorMessage = '';
 
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email.trim());
+
+    if (!emailValido) {
+      this.errorMessage = 'Ingresá un correo electrónico válido.';
+      return;
+    }
+
+    if (!this.password) {
+      this.errorMessage = 'Ingresá tu contraseña.';
+      return;
+    }
+
     this.http.post<Usuario>(
       'http://127.0.0.1:8000/api/v1/login/',
       {
-        email: this.email,
+        email: this.email.trim(),
         password: this.password
       }
     ).subscribe({
@@ -57,10 +69,12 @@ export class Login {
       error: (error) => {
         console.error('Error al iniciar sesión:', error);
 
-        if (error.status === 401) {
+        if (error.status === 400 || error.status === 401) {
           this.errorMessage = 'Correo electrónico o contraseña incorrectos.';
-        } else {
+        } else if (error.status === 0) {
           this.errorMessage = 'No se pudo conectar con el servidor.';
+        } else {
+          this.errorMessage = 'Ocurrió un error inesperado. Intentá nuevamente.';
         }
 
         this.cdr.detectChanges();

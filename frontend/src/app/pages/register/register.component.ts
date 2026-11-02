@@ -27,7 +27,10 @@ export class RegisterComponent {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      phone: ['', [
+        Validators.required,
+        Validators.pattern(/^[0-9]{7,15}$/)
+      ]],
       email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
@@ -68,20 +71,28 @@ export class RegisterComponent {
         },
         error: (err) => {
           this.isLoading.set(false);
-
-          if (err.status === 400 && err.error?.email) {
-            const mensaje = err.error.email;
-
-            this.errorMessage.set(
-              Array.isArray(mensaje) ? mensaje[0] : mensaje
-            );
-          } else {
-            this.errorMessage.set(
-              'Ocurrió un error al registrar el usuario.'
-            );
-          }
-
           console.error('Error registering user:', err);
+
+          if (err.status === 400) {
+            const errores = err.error;
+
+            const mensaje =
+              errores?.email ||
+              errores?.num_contacto ||
+              errores?.password ||
+              errores?.detail;
+
+            this.errorMessage.set(
+              mensaje
+                ? (Array.isArray(mensaje) ? mensaje[0] : mensaje)
+                : 'Revisá los datos ingresados.'
+            );
+
+          } else if (err.status === 0) {
+            this.errorMessage.set('No se pudo conectar con el servidor.');
+          } else {
+            this.errorMessage.set('Ocurrió un error inesperado. Intentá nuevamente.');
+          }
         }
       });
     } else {

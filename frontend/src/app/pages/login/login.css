@@ -5,15 +5,20 @@
     background-attachment: fixed;
 }
 
-.login-page::before {
-    content: "";
+.login-container {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 
-    position: fixed;
-    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('/assets/images/hotel.jpg');
 
-    background: rgba(0, 0, 0, 0.6);
-
-    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .login-container {
