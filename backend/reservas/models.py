@@ -38,6 +38,7 @@ class Reserva(models.Model):
     observaciones = models.TextField(blank=True)
 
     estado = models.CharField(max_length=20, default="pendiente")
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     adicionales = models.ManyToManyField(Adicional, blank=True, related_name="reservas")
 

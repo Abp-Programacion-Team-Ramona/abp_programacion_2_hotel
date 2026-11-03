@@ -23,6 +23,7 @@ interface ReservaAdmin {
   observaciones: string;
   estado: string;
   adicionales: string[];
+  fecha_creacion: string;
 }
 
 @Component({
@@ -60,9 +61,15 @@ export class AdminDashboard implements OnInit {
       reservas: this.http.get<ReservaAdmin[]>(`${environment.apiUrl}/reservas/`)
     }).subscribe({
       next: ({ habitaciones, reservas }) => {
+        const reservasOrdenadas = [...reservas].sort(
+          (a, b) =>
+            new Date(b.fecha_creacion).getTime() -
+            new Date(a.fecha_creacion).getTime()
+        );
+
         this.habitaciones.set(habitaciones);
-        this.reservas.set(reservas);
-        this.reservasFiltradas.set(reservas);
+        this.reservas.set(reservasOrdenadas);
+        this.reservasFiltradas.set(reservasOrdenadas);
         this.cargando.set(false);
       },
       error: () => {

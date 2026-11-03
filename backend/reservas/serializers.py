@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from .models import Adicional, Reserva
 
 
@@ -16,9 +17,10 @@ class ReservaSerializer(serializers.ModelSerializer):
             "observaciones",
             "estado",
             "adicionales",
+            "fecha_creacion",
         ]
 
-        read_only_fields = ["id", "estado"]
+        read_only_fields = ["id", "estado", "fecha_creacion"]
 
     def validate(self, attrs):
         desde = attrs["desde"]
@@ -40,17 +42,20 @@ class AdicionalSerializer(serializers.ModelSerializer):
             "nombre",
             "precio",
         ]
-        
+
+
 class ReservaDetalleSerializer(serializers.ModelSerializer):
     numero_habitacion = serializers.IntegerField(
         source="id_habitacion.numero", read_only=True
     )
+
     adicionales = serializers.SlugRelatedField(
         many=True, read_only=True, slug_field="nombre"
     )
 
     class Meta:
         model = Reserva
+
         fields = [
             "id",
             "id_usuario",
@@ -62,5 +67,7 @@ class ReservaDetalleSerializer(serializers.ModelSerializer):
             "observaciones",
             "estado",
             "adicionales",
+            "fecha_creacion",
         ]
+
         read_only_fields = fields
